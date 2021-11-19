@@ -9,7 +9,6 @@ import java.lang.NumberFormatException
 
 class MainActivity : AppCompatActivity() {
 
-
     private lateinit var binding: ActivityMainBinding
     private lateinit var settings: SharedPreferences
     private lateinit var agreement: String
@@ -67,15 +66,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun updateAgreement() {
-        binding.tvAgreement.text = agreement
-    }
-
-    fun updatePlPinguins(text: String) {
+    private fun updatePlPinguins(text: String) {
         binding.tvPluralsPenguins.text = text
     }
 
-    fun updatePlDays(text: String) {
+    private fun updatePlDays(text: String) {
         binding.tvPluralsDays.text = text
     }
 
@@ -115,10 +110,9 @@ class MainActivity : AppCompatActivity() {
     ) {
         agreement = if (text1 != "" && text2 != "" && number1 != "" && number2 != "") {
             "${resources.getString(R.string.model_begin_agreement)} $text1, $text2, $number1, $number2 ${
-                resources.getString(R.string.model_end_agreement)
-            }"
+                resources.getString(R.string.model_end_agreement)}\n\n\n"
         } else {
-            resources.getString(R.string.main_there_will_be_an_agreement_here)
+            resources.getString(R.string.main_there_will_be_an_agreement_here) + "\n\n\n"
         }
         binding.tvAgreement.text = agreement
     }
