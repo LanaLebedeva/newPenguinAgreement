@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
 import com.agreement.penguinsAgreement.contract.Contract
 import com.agreement.penguinsAgreement.presenter.PresenterMainActivity
+import leakcanary.AppWatcher
 
 class MainActivity : AppCompatActivity(), Contract.ViewMain {
     companion object {
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity(), Contract.ViewMain {
         initValue()
         myGetSettingsPreferences()
         checkButton()
+        AppWatcher.objectWatcher.watch(MainActivity, "View was detached")
     }
 
     override fun initValue() {
@@ -42,7 +44,7 @@ class MainActivity : AppCompatActivity(), Contract.ViewMain {
 
     private fun myGetSettingsPreferences() {
         settings = getSharedPreferences(FILE_PREFS, MODE_PRIVATE)
-        // получаем настройки                                        
+        // получаем настройки
         with(binding) {
             tvText1.setText(settings.getString(KEY_TEXT1, ""))
             tvText2.setText(settings.getString(KEY_TEXT2, ""))
