@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Penguin agreement</string>
+    <!-- MainActivity start-->
+    <string name="main_enter_text">введите тест</string>
+    <string name="main_enter_another_text">введите другой текст</string>
+    <string name="main_enter_a_number_of_penguins">введите количество пингвинов</string>
+    <string name="main_pluralsPenguins">пингвины</string>
+    <string name="main_enter_the_numbers_of_days">введите количество дней</string>
+    <string name="main_pluralsDays">дни</string>
+    <string name="main_confirm_it">принять</string>
+    <string name="main_there_will_be_an_agreement_here">Здесь будет соглашение\n\n\n</string>
+    <string name="main_penguinsAgreement">Соглашение о пингвинах</string>
+    <!--MainActivity end-->
+
+    <plurals name="pluralsPenguins">
+        <item quantity="one" tools:ignore="ImpliedQuantity">пингвин</item>
+        <item quantity="few">пингвина</item>
+        <item quantity="many">пингвинов</item>
+        <item quantity="other">пингвинов</item>
+    </plurals>
+    <plurals name="pluralsDays">
+        <item quantity="one" tools:ignore="ImpliedQuantity">день</item>
+        <item quantity="few">дня</item>
+        <item quantity="many">дней</item>
+        <item quantity="other">дней</item>
+    </plurals>
+    <string name="model_begin_agreement">"Согласно заполненнным полям: "</string>
+    <string name="model_end_agreement">. Вы подтверждаете, что гарантируете оплату питания указанным животным в течение указанного срока</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="maxLength">256</dimen>
+    <dimen name="startEnd">32dp</dimen>
+    <dimen name="topBottom">50dp</dimen>
+    <dimen name="top">16dp</dimen>
+</resources>
