@@ -22,8 +22,6 @@ interface Contract {
             text2: String,
             number1: String,
             number2: String,
-            agreementBegin: String,
-            agreementEnd: String
         )
     }
 }

@@ -8,7 +8,7 @@ import java.lang.NumberFormatException
 
 class PresenterMainActivity(mainActivity: MainActivity) : Contract.PresenterMain {
     private val view: MainActivity = mainActivity
-    private val model = ModelAgreementSource(view.resources.getString(R.string.main_there_will_be_an_agreement_here))
+    private val model = ModelAgreementSource(view.resources)
 
     override fun getAgreement(): String {
         return model.getAgreement()
@@ -25,8 +25,6 @@ class PresenterMainActivity(mainActivity: MainActivity) : Contract.PresenterMain
             text2,
             numberPenguins,
             numberDays,
-            view.resources.getString(R.string.model_begin_agreement),
-            view.resources.getString(R.string.model_end_agreement)
         )
         view.updateAgreement()
     }

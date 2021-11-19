@@ -1,10 +1,11 @@
 package com.agreement.penguinsAgreement.model
 
+import android.content.res.Resources
+import com.agreement.penguinsAgreement.R
 import com.agreement.penguinsAgreement.contract.Contract
 
-class ModelAgreementSource(_agreement:String): Contract.ModelAgreement {
-    private var agreement: String = _agreement
-    private val agreementNull = _agreement
+class ModelAgreementSource(private val resources: Resources) : Contract.ModelAgreement {
+    private var agreement = resources.getString(R.string.main_there_will_be_an_agreement_here)
 
     override fun getAgreement(): String =
         agreement
@@ -14,13 +15,15 @@ class ModelAgreementSource(_agreement:String): Contract.ModelAgreement {
         text2: String,
         number1: String,
         number2: String,
-        agreementBegin: String,
-        agreementEnd: String
     ) {
-        agreement = if (text1 !="" && text2 != "" && number1 != "" && number2 !="") {
-            "$agreementBegin $text1, $text2, $number1, $number2 $agreementEnd \n\n\n"
+        agreement = if (text1 != "" && text2 != "" && number1 != "" && number2 != "") {
+            "${resources.getString(R.string.model_begin_agreement)} $text1, $text2, $number1, $number2 ${
+                resources.getString(
+                    R.string.model_end_agreement
+                )
+            }"
         } else {
-            agreementNull
+            resources.getString(R.string.main_there_will_be_an_agreement_here)
         }
 
     }
