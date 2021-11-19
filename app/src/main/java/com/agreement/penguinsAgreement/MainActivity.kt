@@ -10,14 +10,6 @@ import com.agreement.penguinsAgreement.presenter.PresenterMainActivity
 import leakcanary.AppWatcher
 
 class MainActivity : AppCompatActivity(), Contract.ViewMain {
-    companion object {
-        private const val FILE_PREFS = "TASK_PENGUIN"
-        private const val KEY_AGREEMENT = "AGREEMENT_VARIABLE"
-        private const val KEY_NUMBER_PENGUINS = "NUMBER_PENGUIN_VARIABLE"
-        private const val KEY_NUMBER_DAYS = "NUMBER_DAYS_VARIABLE"
-        private const val KEY_TEXT1 = "TEXT1_KEY"
-        private const val KEY_TEXT2 = "TEXT2_KEY"
-    }
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var settings: SharedPreferences
@@ -110,5 +102,14 @@ class MainActivity : AppCompatActivity(), Contract.ViewMain {
             putString(KEY_NUMBER_DAYS, binding.tvNumberDays.text.toString())
             apply()
         }
+    }
+
+    companion object {
+        private const val FILE_PREFS = "TASK_PENGUIN"
+        private const val KEY_AGREEMENT = "AGREEMENT_VARIABLE"
+        private const val KEY_NUMBER_PENGUINS = "NUMBER_PENGUIN_VARIABLE"
+        private const val KEY_NUMBER_DAYS = "NUMBER_DAYS_VARIABLE"
+        private const val KEY_TEXT1 = "TEXT1_KEY"
+        private const val KEY_TEXT2 = "TEXT2_KEY"
     }
 }
