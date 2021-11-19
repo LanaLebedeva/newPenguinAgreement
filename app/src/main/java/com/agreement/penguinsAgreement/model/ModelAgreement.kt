@@ -18,9 +18,7 @@ class ModelAgreementSource(private val resources: Resources) : Contract.ModelAgr
     ) {
         agreement = if (text1 != "" && text2 != "" && number1 != "" && number2 != "") {
             "${resources.getString(R.string.model_begin_agreement)} $text1, $text2, $number1, $number2 ${
-                resources.getString(
-                    R.string.model_end_agreement
-                )
+                resources.getString(R.string.model_end_agreement)
             }"
         } else {
             resources.getString(R.string.main_there_will_be_an_agreement_here)
