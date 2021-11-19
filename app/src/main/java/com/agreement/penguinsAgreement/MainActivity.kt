@@ -5,34 +5,27 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
-import com.agreement.penguinsAgreement.contract.Contract
-import com.agreement.penguinsAgreement.presenter.PresenterMainActivity
+import java.lang.NumberFormatException
 
-class MainActivity : AppCompatActivity(), Contract.ViewMain {
-    companion object {
-        private const val FILE_PREFS = "TASK_PENGUIN"
-        private const val KEY_AGREEMENT = "AGREEMENT_VARIABLE"
-        private const val KEY_NUMBER_PENGUINS = "NUMBER_PENGUIN_VARIABLE"
-        private const val KEY_NUMBER_DAYS = "NUMBER_DAYS_VARIABLE"
-        private const val KEY_TEXT1 = "TEXT1_KEY"
-        private const val KEY_TEXT2 = "TEXT2_KEY"
-    }
+class MainActivity : AppCompatActivity() {
+
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var settings: SharedPreferences
-    private lateinit var presenter: PresenterMainActivity
+    private lateinit var agreement: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        presenter = PresenterMainActivity(this)
+
         initValue()
         myGetSettingsPreferences()
         checkButton()
     }
 
-    override fun initValue() {
+    private fun initValue() {
+        agreement = getString(R.string.main_there_will_be_an_agreement_here)
         with(binding) {
             tvAgreement.text = getString(R.string.main_there_will_be_an_agreement_here)
             tvPluralsPenguins.text = getString(R.string.main_pluralsPenguins)
@@ -51,21 +44,21 @@ class MainActivity : AppCompatActivity(), Contract.ViewMain {
         }
     }
 
-    override fun checkButton() {
+    private fun checkButton() {
         binding.tvNumberPenguins.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                presenter.makePlural(
-                    binding.tvNumberPenguins.text.toString(), R.plurals.pluralsPenguins
-                )
+                makePlural(binding.tvNumberPenguins.text.toString(), R.plurals.pluralsPenguins)
             }
         }
         binding.tvNumberDays.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                presenter.makePlural(binding.tvNumberDays.text.toString(), R.plurals.pluralsDays)
+                makePlural(binding.tvNumberDays.text.toString(), R.plurals.pluralsDays)
             }
         }
         binding.btnConfirm.setOnClickListener {
-            presenter.makeAgreement(
+            makePlural(binding.tvNumberDays.text.toString(), R.plurals.pluralsDays)
+            makePlural(binding.tvNumberPenguins.text.toString(), R.plurals.pluralsPenguins)
+            makeAgreement(
                 binding.tvText1.text.toString(),
                 binding.tvText2.text.toString(),
                 binding.tvNumberPenguins.text.toString(),
@@ -74,15 +67,15 @@ class MainActivity : AppCompatActivity(), Contract.ViewMain {
         }
     }
 
-    override fun updateAgreement() {
-        binding.tvAgreement.text = presenter.getAgreement()
+    fun updateAgreement() {
+        binding.tvAgreement.text = agreement
     }
 
-    override fun updatePlPinguins(text: String) {
+    fun updatePlPinguins(text: String) {
         binding.tvPluralsPenguins.text = text
     }
 
-    override fun updatePlDays(text: String) {
+    fun updatePlDays(text: String) {
         binding.tvPluralsDays.text = text
     }
 
@@ -98,6 +91,38 @@ class MainActivity : AppCompatActivity(), Contract.ViewMain {
         binding.tvAgreement.text = savedInstanceState.getString(KEY_AGREEMENT)
     }
 
+    private fun makePlural(number: String, plurals: Int) {
+        val parsInt: Int = try {
+            Integer.parseInt(number)
+        } catch (e: NumberFormatException) {
+            Integer.MAX_VALUE
+        }
+        val plural = resources.getQuantityString(
+            plurals,
+            parsInt
+        )
+        when (plurals) {
+            R.plurals.pluralsPenguins -> updatePlPinguins(plural)
+            R.plurals.pluralsDays -> updatePlDays(plural)
+        }
+    }
+
+    private fun makeAgreement(
+        text1: String,
+        text2: String,
+        number1: String,
+        number2: String,
+    ) {
+        agreement = if (text1 != "" && text2 != "" && number1 != "" && number2 != "") {
+            "${resources.getString(R.string.model_begin_agreement)} $text1, $text2, $number1, $number2 ${
+                resources.getString(R.string.model_end_agreement)
+            }"
+        } else {
+            resources.getString(R.string.main_there_will_be_an_agreement_here)
+        }
+        binding.tvAgreement.text = agreement
+    }
+
     override fun onPause() {
         super.onPause()
         val prefEditor: SharedPreferences.Editor = settings.edit()
@@ -108,5 +133,14 @@ class MainActivity : AppCompatActivity(), Contract.ViewMain {
             putString(KEY_NUMBER_DAYS, binding.tvNumberDays.text.toString())
             apply()
         }
+    }
+
+    companion object {
+        private const val FILE_PREFS = "TASK_PENGUIN"
+        private const val KEY_AGREEMENT = "AGREEMENT_VARIABLE"
+        private const val KEY_NUMBER_PENGUINS = "NUMBER_PENGUIN_VARIABLE"
+        private const val KEY_NUMBER_DAYS = "NUMBER_DAYS_VARIABLE"
+        private const val KEY_TEXT1 = "TEXT1_KEY"
+        private const val KEY_TEXT2 = "TEXT2_KEY"
     }
 }
