@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="penguinTextView">
+    <style name="PenguinTextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/pineGlade</item>
+        <item name="android:background">@color/pine_glade</item>
     </style>
 
-    <style name="penguinLayout">
+    <style name="PenguinLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>

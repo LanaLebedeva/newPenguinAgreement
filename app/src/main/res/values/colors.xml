@@ -7,11 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="pineGlade">#4FACCC86</color>
-    <color name="outer_Space">#FF263238</color>
-    <color name="chateauGreen">#FF4BAF50</color>
+    <color name="pine_glade">#4FACCC86</color>
+    <color name="outer_space">#FF263238</color>
+    <color name="chateau_green">#FF4BAF50</color>
     <color name="firefly">#800E2E2E</color>
-    <color name="mineShaft">#FF272525</color>
+    <color name="mine_shaft">#FF272525</color>
     <color name="conifer">#FF9CD25B</color>
     <color name="everglade">#FF245126</color>
 </resources>
