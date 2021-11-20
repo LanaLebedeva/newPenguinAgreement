@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:contentDescription="@string/main_penguinsAgreement"
+    android:paddingBottom="16dp"
+    android:visibility="visible"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -53,7 +55,7 @@
         <TextView
             android:id="@+id/tv_penguins"
             style="@style/penguinLayout"
-            android:text="@string/main_penguins"/>
+            android:text="@string/main_penguins" />
 
         <com.google.android.material.textfield.TextInputLayout style="@style/penguinLayout">
 
@@ -67,7 +69,7 @@
             <TextView
                 android:id="@+id/tv_days"
                 style="@style/penguinLayout"
-                android:text="@string/main_days"/>
+                android:text="@string/main_days" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -83,7 +85,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/top"
             android:layout_marginBottom="@dimen/top"
-            android:text="@string/main_there_will_be_an_agreement_here" />
+            android:paddingBottom="32dp"
+            android:text="@string/main_there_will_be_an_agreement_here"
+            android:visibility="visible" />
 
     </LinearLayout>
 </ScrollView>
