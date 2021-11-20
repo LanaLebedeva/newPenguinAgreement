@@ -9,8 +9,9 @@
     <string name="main_enter_the_numbers_of_days">введите количество дней</string>
     <string name="main_days">дней</string>
     <string name="main_confirm_it">принять</string>
-    <string name="main_there_will_be_an_agreement_here">Здесь будет соглашение</string>
+    <string name="main_there_will_be_an_agreement">Здесь будет соглашение</string>
     <string name="main_penguinsAgreement">Соглашение о пингвинах</string>
+    <string name="main_fill_in_the_fields">"заполните все поля "</string>
     <!--MainActivity end-->
 
     <plurals name="pluralsPenguins">
@@ -25,6 +26,7 @@
         <item quantity="many">дней</item>
         <item quantity="other">дней</item>
     </plurals>
-    <string name="model_begin_agreement">"Согласно заполненнным полям: "</string>
-    <string name="model_end_agreement">. Вы подтверждаете, что гарантируете оплату питания указанным животным в течение указанного срока</string>
+    <string name="model_begin_agreement">Согласно заполненнным полям: </string>
+    <string name="model_end_agreement">Вы подтверждаете, что гарантируете оплату питания указанным животным в течение указанного срока</string>
+
 </resources>

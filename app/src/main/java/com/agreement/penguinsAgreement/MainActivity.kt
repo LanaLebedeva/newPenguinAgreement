@@ -3,9 +3,13 @@ package com.agreement.penguinsAgreement
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
 import java.lang.NumberFormatException
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,8 +29,8 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun initArgument() {
-        agreement = getString(R.string.main_there_will_be_an_agreement_here)
-        binding.tvAgreement.text = getString(R.string.main_there_will_be_an_agreement_here)
+        agreement = getString(R.string.main_there_will_be_an_agreement)
+        binding.tvAgreement.text = getString(R.string.main_there_will_be_an_agreement)
     }
 
     private fun initPreferences() {
@@ -113,10 +117,12 @@ class MainActivity : AppCompatActivity() {
         val numberDays: String = binding.tvDaysNumber.text.toString()
 
         agreement = if (title != "" && subject != "" && numberPenguins != "" && numberDays != "") {
-            "${resources.getString(R.string.model_begin_agreement)} $title, $subject, $numberPenguins, $numberDays ${
+            "${resources.getString(R.string.model_begin_agreement)} $title, $subject, $numberPenguins, $numberDays. ${
                 resources.getString(R.string.model_end_agreement)}"
         } else {
-            resources.getString(R.string.main_there_will_be_an_agreement_here)
+            val toast = Toast.makeText(this, resources.getString(R.string.main_fill_in_the_fields), Toast.LENGTH_LONG)
+            toast.show()
+            resources.getString(R.string.main_there_will_be_an_agreement)
         }
         binding.tvAgreement.text = agreement
     }

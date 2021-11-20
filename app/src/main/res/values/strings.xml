@@ -9,7 +9,8 @@
     <string name="main_enter_the_numbers_of_days">enter the numbers of days</string>
     <string name="main_days">days</string>
     <string name="main_confirm_it">confirm it</string>
-    <string name="main_there_will_be_an_agreement_here">there will be an agreement here</string>
+    <string name="main_there_will_be_an_agreement">there will be an agreement here</string>
+    <string name="main_fill_in_the_fields">fill in the fields</string>
     <!--MainActivity end-->
 
     <!--ModelMainActivity-->
