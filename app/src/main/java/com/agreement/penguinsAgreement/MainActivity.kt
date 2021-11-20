@@ -2,13 +2,14 @@ package com.agreement.penguinsAgreement
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 import java.lang.NumberFormatException
-
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -41,7 +42,8 @@ class MainActivity : AppCompatActivity() {
             tvSubject.setText(preferences.getString(STR_KEY_SUBJECT, ""))
             tvPenguinsNumber.setText(preferences.getString(STR_KEY_NUMBER_PENGUINS, ""))
             tvDaysNumber.setText(preferences.getString(STR_KEY_NUMBER_DAYS, ""))
-            tvPenguins.text = preferences.getString(STR_PENGUINS,resources.getString(R.string.main_penguins))
+            tvPenguins.text =
+                preferences.getString(STR_PENGUINS, resources.getString(R.string.main_penguins))
             tvDays.text = preferences.getString(STR_DAYS, resources.getString(R.string.main_days))
         }
     }
@@ -50,7 +52,6 @@ class MainActivity : AppCompatActivity() {
         checkFocusChangeListener()
         checkButtonClickListener()
     }
-
 
 
     private fun checkFocusChangeListener() {
@@ -118,10 +119,12 @@ class MainActivity : AppCompatActivity() {
 
         agreement = if (title != "" && subject != "" && numberPenguins != "" && numberDays != "") {
             "${resources.getString(R.string.model_begin_agreement)} $title, $subject, $numberPenguins, $numberDays. ${
-                resources.getString(R.string.model_end_agreement)}"
+                resources.getString(R.string.model_end_agreement)
+            }"
         } else {
-            val toast = Toast.makeText(this, resources.getString(R.string.main_fill_in_the_fields), Toast.LENGTH_LONG)
-            toast.show()
+            val contextView = findViewById<View>(R.id.linearLayout)
+            Snackbar.make(contextView, R.string.main_fill_in_the_fields, Snackbar.LENGTH_SHORT)
+                .show()
             resources.getString(R.string.main_there_will_be_an_agreement)
         }
         binding.tvAgreement.text = agreement
@@ -135,8 +138,8 @@ class MainActivity : AppCompatActivity() {
             putString(STR_KEY_SUBJECT, binding.tvSubject.text.toString())
             putString(STR_KEY_NUMBER_PENGUINS, binding.tvPenguinsNumber.text.toString())
             putString(STR_KEY_NUMBER_DAYS, binding.tvDaysNumber.text.toString())
-            putString(STR_PENGUINS,binding.tvPenguins.text.toString())
-            putString(STR_DAYS,binding.tvDays.text.toString())
+            putString(STR_PENGUINS, binding.tvPenguins.text.toString())
+            putString(STR_DAYS, binding.tvDays.text.toString())
             apply()
         }
     }
