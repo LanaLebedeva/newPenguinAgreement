@@ -5,11 +5,11 @@
     <string name="main_enter_text">введите тест</string>
     <string name="main_enter_another_text">введите другой текст</string>
     <string name="main_enter_a_number_of_penguins">введите количество пингвинов</string>
-    <string name="main_pluralsPenguins">пингвины</string>
+    <string name="main_penguins">пингвинов</string>
     <string name="main_enter_the_numbers_of_days">введите количество дней</string>
-    <string name="main_pluralsDays">дни</string>
+    <string name="main_days">дней</string>
     <string name="main_confirm_it">принять</string>
-    <string name="main_there_will_be_an_agreement_here">Здесь будет соглашение\n\n\n</string>
+    <string name="main_there_will_be_an_agreement_here">Здесь будет соглашение</string>
     <string name="main_penguinsAgreement">Соглашение о пингвинах</string>
     <!--MainActivity end-->
 
