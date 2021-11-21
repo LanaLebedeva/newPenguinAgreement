@@ -2,10 +2,7 @@ package com.agreement.penguinsAgreement
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar

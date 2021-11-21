@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout"
-        android:layout_marginStart="@dimen/startEnd"
-        android:layout_marginTop="@dimen/topBottom"
-        android:layout_marginEnd="@dimen/startEnd"
-        android:layout_marginBottom="@dimen/topBottom"
+        android:layout_marginStart="@dimen/defaultMarginHorizontal"
+        android:layout_marginTop="@dimen/defaultMarginVertical"
+        android:layout_marginEnd="@dimen/defaultMarginHorizontal"
+        android:layout_marginBottom="@dimen/defaultMarginVertical"
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -61,7 +61,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_days_number"
                 style="@style/PenguinTextView"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/defaultMarginTop"
                 android:hint="@string/main_enter_the_numbers_of_days"
                 android:inputType="number" />
 
@@ -74,19 +74,18 @@
         <Button
             android:id="@+id/btn_confirm"
             style="@style/PenguinLayout"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/defaultBottom"
             android:text="@string/main_confirm_it"
-            android:textColor="#263238" />
+            android:textColor="@color/outer_space" />
 
         <TextView
             android:id="@+id/tv_agreement"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/top"
-            android:layout_marginBottom="@dimen/top"
-            android:paddingBottom="32dp"
+            android:layout_marginTop="@dimen/defaultBottom"
+            android:layout_marginBottom="@dimen/defaultBottom"
+            android:paddingBottom="@dimen/defaultPaddingBottom"
             android:text="@string/main_there_will_be_an_agreement"
             android:visibility="visible" />
-
     </LinearLayout>
 </ScrollView>
