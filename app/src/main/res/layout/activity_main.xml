@@ -8,9 +8,9 @@
     android:visibility="visible">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout"
         android:layout_marginStart="@dimen/defaultMarginHorizontal"
         android:layout_marginTop="@dimen/defaultMarginVertical"
         android:layout_marginEnd="@dimen/defaultMarginHorizontal"
@@ -18,32 +18,42 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/PenguinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:counterEnabled="true"
             app:counterMaxLength="@integer/defaultCounterMaxLength">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 style="@style/PenguinTextView"
                 android:hint="@string/main_enter_title" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/PenguinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:counterEnabled="true"
             app:counterMaxLength="@integer/defaultCounterMaxLength">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 style="@style/PenguinTextView"
                 android:hint="@string/main_enter_subject" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout style="@style/PenguinLayout">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_penguins_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 style="@style/PenguinTextView"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
@@ -53,13 +63,18 @@
 
         <TextView
             android:id="@+id/tv_penguins"
-            style="@style/PenguinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/main_penguins" />
 
-        <com.google.android.material.textfield.TextInputLayout style="@style/PenguinLayout">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_days_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 style="@style/PenguinTextView"
                 android:layout_marginTop="@dimen/defaultMarginTop"
                 android:hint="@string/main_enter_the_numbers_of_days"
@@ -67,13 +82,15 @@
 
             <TextView
                 android:id="@+id/tv_days"
-                style="@style/PenguinLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/main_days" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_confirm"
-            style="@style/PenguinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/defaultBottom"
             android:text="@string/main_confirm_it"
             android:textColor="@color/outer_space" />
