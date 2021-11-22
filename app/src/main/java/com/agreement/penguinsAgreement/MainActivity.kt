@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
+import leakcanary.AppWatcher
 import java.lang.NumberFormatException
 
 class MainActivity : AppCompatActivity() {
