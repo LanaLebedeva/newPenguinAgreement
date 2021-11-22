@@ -1,21 +1,22 @@
 <resources>
     <string name="app_name">Penguin agreement</string>
     <!-- MainActivity start-->
-    <string name="main_penguinsAgreement">penguins agreement</string>
-    <string name="main_enter_text">enter text</string>
-    <string name="main_enter_another_text">enter another text</string>
+    <string name="main_penguins_agreement">penguins agreement</string>
+    <string name="main_enter_title">enter title</string>
+    <string name="main_enter_subject">enter subject</string>
     <string name="main_enter_a_number_of_penguins">enter a number of penguins</string>
-    <string name="main_pluralsPenguins">penguins</string>
+    <string name="main_penguins">penguins</string>
     <string name="main_enter_the_numbers_of_days">enter the numbers of days</string>
-    <string name="main_pluralsDays">days</string>
+    <string name="main_days">days</string>
     <string name="main_confirm_it">confirm it</string>
-    <string name="main_there_will_be_an_agreement_here">there will be an agreement here\n\n\n</string>
+    <string name="main_there_will_be_an_agreement">there will be an agreement here</string>
+    <string name="main_fill_in_the_fields">fill in the fields</string>
     <!--MainActivity end-->
 
-    <!--ModelMainActivity-->
+    <!--Model-->
     <string name="model_begin_agreement">According to the fields: </string>
-    <string name="model_end_agreement" >filled in. You confirm that you guarantee to pay for the food for the specified period of time\n\n\n\n</string>
-    <!--ModelMainActivity-->
+    <string name="model_end_agreement" >filled in. You confirm that you guarantee to pay for the food for the specified period of time</string>
+    <!--Model end-->
 
     <plurals name="pluralsPenguins">
         <item quantity="one">penguin</item>

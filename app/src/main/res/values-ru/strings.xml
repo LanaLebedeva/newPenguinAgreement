@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Penguin agreement</string>
+    <string name="app_name">Соглашение о пингвинах</string>
     <!-- MainActivity start-->
-    <string name="main_enter_text">введите тест</string>
-    <string name="main_enter_another_text">введите другой текст</string>
+    <string name="main_enter_title">введите титул</string>
+    <string name="main_enter_subject">введите предмет</string>
     <string name="main_enter_a_number_of_penguins">введите количество пингвинов</string>
-    <string name="main_pluralsPenguins">пингвины</string>
+    <string name="main_penguins">пингвинов</string>
     <string name="main_enter_the_numbers_of_days">введите количество дней</string>
-    <string name="main_pluralsDays">дни</string>
+    <string name="main_days">дней</string>
     <string name="main_confirm_it">принять</string>
-    <string name="main_there_will_be_an_agreement_here">Здесь будет соглашение\n\n\n</string>
-    <string name="main_penguinsAgreement">Соглашение о пингвинах</string>
+    <string name="main_there_will_be_an_agreement">Здесь будет соглашение</string>
+    <string name="main_penguins_agreement">Соглашение о пингвинах</string>
+    <string name="main_fill_in_the_fields">"заполните все поля "</string>
     <!--MainActivity end-->
 
     <plurals name="pluralsPenguins">
@@ -25,6 +26,9 @@
         <item quantity="many">дней</item>
         <item quantity="other">дней</item>
     </plurals>
-    <string name="model_begin_agreement">"Согласно заполненнным полям: "</string>
-    <string name="model_end_agreement">. Вы подтверждаете, что гарантируете оплату питания указанным животным в течение указанного срока</string>
+
+    <!--Model-->
+    <string name="model_begin_agreement">Согласно заполненнным полям: </string>
+    <string name="model_end_agreement">Вы подтверждаете, что гарантируете оплату питания указанным животным в течение указанного срока</string>
+    <!--Model_end-->
 </resources>
