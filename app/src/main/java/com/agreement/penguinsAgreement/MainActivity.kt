@@ -8,7 +8,6 @@ import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 import java.lang.NumberFormatException
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -24,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         initPreferences()
         updateFields()
     }
-
 
     private fun initArgument() {
         agreement = getString(R.string.main_there_will_be_an_agreement)
@@ -49,7 +47,6 @@ class MainActivity : AppCompatActivity() {
         checkFocusChangeListener()
         checkButtonClickListener()
     }
-
 
     private fun checkFocusChangeListener() {
         binding.tvPenguinsNumber.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
@@ -82,8 +79,8 @@ class MainActivity : AppCompatActivity() {
 
     // сохранение состояния при повороте экрана
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString(STR_KEY_AGREEMENT, binding.tvAgreement.text.toString())
         super.onSaveInstanceState(outState)
+        outState.putString(STR_KEY_AGREEMENT, binding.tvAgreement.text.toString())
     }
 
     // получение ранее сохраненного состояния при повороте экрана
