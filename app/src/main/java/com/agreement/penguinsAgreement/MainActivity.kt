@@ -77,18 +77,6 @@ class MainActivity : AppCompatActivity() {
         binding.tvDays.text = text
     }
 
-    // сохранение состояния при повороте экрана
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString(STR_KEY_AGREEMENT, binding.tvAgreement.text.toString())
-    }
-
-    // получение ранее сохраненного состояния при повороте экрана
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        binding.tvAgreement.text = savedInstanceState.getString(STR_KEY_AGREEMENT)
-    }
-
     private fun makePlural(number: String, plurals: Int) {
         val parsInt: Int = try {
             Integer.parseInt(number)
