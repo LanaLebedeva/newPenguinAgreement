@@ -1,28 +1,30 @@
 <resources>
     <string name="app_name">Penguin agreement</string>
     <!-- MainActivity start-->
-    <string name="main_penguins_agreement">penguins agreement</string>
-    <string name="main_enter_title">enter title</string>
-    <string name="main_enter_subject">enter subject</string>
-    <string name="main_enter_a_number_of_penguins">enter a number of penguins</string>
-    <string name="main_penguins">penguins</string>
-    <string name="main_enter_the_numbers_of_days">enter the numbers of days</string>
-    <string name="main_days">days</string>
-    <string name="main_confirm_it">confirm it</string>
-    <string name="main_there_will_be_an_agreement">there will be an agreement here</string>
-    <string name="main_fill_in_the_fields">fill in the fields</string>
+    <string name="penguins_agreement">penguins agreement</string>
+    <string name="msg_title_enter">enter title</string>
+    <string name="msg_subject_enter">enter subject</string>
+    <string name="msg_enter_a_number_of_penguins">enter a number of penguins</string>
+    <string name="text_penguins">penguins</string>
+    <string name="msg_enter_the_numbers_of_days">enter the numbers of days</string>
+    <string name="text_days">days</string>
+    <string name="btn_confirm_it">confirm it</string>
+    <string name="msg_there_will_be_an_agreement">there will be an agreement here</string>
+    <string name="snackbar_fill_in_the_fields">fill in the fields</string>
     <!--MainActivity end-->
 
-    <!--Model-->
+    <!--Model start-->
     <string name="model_begin_agreement">According to the fields: </string>
     <string name="model_end_agreement" >filled in. You confirm that you guarantee to pay for the food for the specified period of time</string>
     <!--Model end-->
 
-    <plurals name="pluralsPenguins">
+
+    <plurals name="penguins">
         <item quantity="one">penguin</item>
         <item quantity="other">penguins</item>
     </plurals>
-    <plurals name="pluralsDays">
+
+    <plurals name="days">
         <item quantity="one">day</item>
         <item quantity="other">days</item>
     </plurals>

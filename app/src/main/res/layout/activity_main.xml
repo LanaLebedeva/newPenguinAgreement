@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:contentDescription="@string/main_penguins_agreement"
-    android:paddingBottom="16dp"
+    android:contentDescription="@string/penguins_agreement"
+    android:paddingBottom="@dimen/defaultPaddingBottom"
     android:visibility="visible">
 
     <LinearLayout
@@ -29,7 +29,7 @@
                 style="@style/PenguinTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/main_enter_title"
+                android:hint="@string/msg_title_enter"
                 android:textColorHint="@color/dove_gray"
                 tools:ignore="TextContrastCheck" />
 
@@ -46,7 +46,7 @@
                 style="@style/PenguinTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/main_enter_subject"
+                android:hint="@string/msg_subject_enter"
                 android:textColorHint="@color/dove_gray"
                 tools:ignore="TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -62,7 +62,7 @@
                 style="@style/PenguinTextView"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:hint="@string/main_enter_a_number_of_penguins"
+                android:hint="@string/msg_enter_a_number_of_penguins"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +70,7 @@
             android:id="@+id/tv_penguins"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/main_penguins" />
+            android:text="@string/text_penguins" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -82,14 +82,14 @@
                 android:layout_height="wrap_content"
                 style="@style/PenguinTextView"
                 android:layout_marginTop="@dimen/defaultMarginTop"
-                android:hint="@string/main_enter_the_numbers_of_days"
+                android:hint="@string/msg_enter_the_numbers_of_days"
                 android:inputType="number" />
 
             <TextView
                 android:id="@+id/tv_days"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/main_days" />
+                android:text="@string/text_days" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -97,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/defaultBottom"
-            android:text="@string/main_confirm_it"
+            android:text="@string/btn_confirm_it"
             android:textColor="@color/outer_space"
             android:textColorHint="@color/outer_space"
             tools:ignore="TextContrastCheck" />
@@ -109,7 +109,7 @@
             android:layout_marginTop="@dimen/defaultBottom"
             android:layout_marginBottom="@dimen/defaultBottom"
             android:paddingBottom="@dimen/defaultPaddingBottom"
-            android:text="@string/main_there_will_be_an_agreement"
+            android:text="@string/msg_there_will_be_an_agreement"
             android:visibility="visible" />
     </LinearLayout>
 </ScrollView>

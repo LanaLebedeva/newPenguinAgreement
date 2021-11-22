@@ -2,6 +2,8 @@ package com.agreement.penguinsAgreement
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
@@ -12,69 +14,50 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var preferences: SharedPreferences
-    private lateinit var agreement: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        initArgument()
         initPreferences()
-        updateFields()
-    }
+        binding.btnConfirm.setOnClickListener {
+            makeAgreement()
+        }
+        initTextChangeListeners()
 
-    private fun initArgument() {
-        agreement = getString(R.string.main_there_will_be_an_agreement)
-        binding.tvAgreement.text = getString(R.string.main_there_will_be_an_agreement)
     }
 
     private fun initPreferences() {
         preferences = getSharedPreferences(STR_FILE_SHARED_PREFERENCES, MODE_PRIVATE)
-        // получаем настройки                                        
+        // получаем настройки
         with(binding) {
             tvTitle.setText(preferences.getString(STR_KEY_TITLE, ""))
             tvSubject.setText(preferences.getString(STR_KEY_SUBJECT, ""))
             tvPenguinsNumber.setText(preferences.getString(STR_KEY_NUMBER_PENGUINS, ""))
             tvDaysNumber.setText(preferences.getString(STR_KEY_NUMBER_DAYS, ""))
             tvPenguins.text =
-                preferences.getString(STR_PENGUINS, resources.getString(R.string.main_penguins))
-            tvDays.text = preferences.getString(STR_DAYS, resources.getString(R.string.main_days))
+                preferences.getString(STR_PENGUINS, resources.getString(R.string.text_penguins))
+            tvDays.text = preferences.getString(STR_DAYS, resources.getString(R.string.text_days))
+            tvAgreement.text = preferences.getString(STR_KEY_AGREEMENT, resources.getString(R.string.msg_there_will_be_an_agreement))
         }
     }
 
-    private fun updateFields() {
-        checkFocusChangeListener()
-        checkButtonClickListener()
-    }
-
-    private fun checkFocusChangeListener() {
-        binding.tvPenguinsNumber.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                makePlural(binding.tvPenguinsNumber.text.toString(), R.plurals.pluralsPenguins)
-            }
-        }
-        binding.tvDaysNumber.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                makePlural(binding.tvDaysNumber.text.toString(), R.plurals.pluralsDays)
-            }
-        }
-    }
-
-    private fun checkButtonClickListener() {
+    private fun initTextChangeListeners() {
+        binding.tvDaysNumber.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged( s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) =
+                makePlural(binding.tvDaysNumber.text.toString(), R.plurals.days)
+        })
+        binding.tvPenguinsNumber.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged( s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) =
+                makePlural(binding.tvPenguinsNumber.text.toString(), R.plurals.penguins)
+        })
         binding.btnConfirm.setOnClickListener {
-            makePlural(binding.tvDaysNumber.text.toString(), R.plurals.pluralsDays)
-            makePlural(binding.tvPenguinsNumber.text.toString(), R.plurals.pluralsPenguins)
             makeAgreement()
         }
-    }
-
-    private fun updatePinguins(text: String) {
-        binding.tvPenguins.text = text
-    }
-
-    private fun updateDays(text: String) {
-        binding.tvDays.text = text
     }
 
     private fun makePlural(number: String, plurals: Int) {
@@ -88,8 +71,8 @@ class MainActivity : AppCompatActivity() {
             parsInt
         )
         when (plurals) {
-            R.plurals.pluralsPenguins -> updatePinguins(plural)
-            R.plurals.pluralsDays -> updateDays(plural)
+            R.plurals.penguins -> binding.tvPenguins.text = plural
+            R.plurals.days -> binding.tvDays.text = plural
         }
     }
 
@@ -99,17 +82,16 @@ class MainActivity : AppCompatActivity() {
         val numberPenguins: String = binding.tvPenguinsNumber.text.toString()
         val numberDays: String = binding.tvDaysNumber.text.toString()
 
-        agreement = if (title != "" && subject != "" && numberPenguins != "" && numberDays != "") {
+        binding.tvAgreement.text = if (title != "" && subject != "" && numberPenguins != "" && numberDays != "") {
             "${resources.getString(R.string.model_begin_agreement)} $title, $subject, $numberPenguins, $numberDays. ${
                 resources.getString(R.string.model_end_agreement)
             }"
         } else {
             val contextView = findViewById<View>(R.id.linearLayout)
-            Snackbar.make(contextView, R.string.main_fill_in_the_fields, Snackbar.LENGTH_SHORT)
+            Snackbar.make(contextView, R.string.snackbar_fill_in_the_fields, Snackbar.LENGTH_SHORT)
                 .show()
-            resources.getString(R.string.main_there_will_be_an_agreement)
+            resources.getString(R.string.msg_there_will_be_an_agreement)
         }
-        binding.tvAgreement.text = agreement
     }
 
     override fun onPause() {
@@ -122,6 +104,7 @@ class MainActivity : AppCompatActivity() {
             putString(STR_KEY_NUMBER_DAYS, binding.tvDaysNumber.text.toString())
             putString(STR_PENGUINS, binding.tvPenguins.text.toString())
             putString(STR_DAYS, binding.tvDays.text.toString())
+            putString(STR_KEY_AGREEMENT, binding.tvAgreement.text.toString())
             apply()
         }
     }

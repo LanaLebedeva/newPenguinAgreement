@@ -2,25 +2,25 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Соглашение о пингвинах</string>
     <!-- MainActivity start-->
-    <string name="main_enter_title">введите титул</string>
-    <string name="main_enter_subject">введите предмет</string>
-    <string name="main_enter_a_number_of_penguins">введите количество пингвинов</string>
-    <string name="main_penguins">пингвинов</string>
-    <string name="main_enter_the_numbers_of_days">введите количество дней</string>
-    <string name="main_days">дней</string>
-    <string name="main_confirm_it">принять</string>
-    <string name="main_there_will_be_an_agreement">Здесь будет соглашение</string>
-    <string name="main_penguins_agreement">Соглашение о пингвинах</string>
-    <string name="main_fill_in_the_fields">"заполните все поля "</string>
+    <string name="msg_title_enter">введите титул</string>
+    <string name="msg_subject_enter">введите предмет</string>
+    <string name="msg_enter_a_number_of_penguins">введите количество пингвинов</string>
+    <string name="text_penguins">пингвинов</string>
+    <string name="msg_enter_the_numbers_of_days">введите количество дней</string>
+    <string name="text_days">дней</string>
+    <string name="btn_confirm_it">принять</string>
+    <string name="msg_there_will_be_an_agreement">Здесь будет соглашение</string>
+    <string name="penguins_agreement">Соглашение о пингвинах</string>
+    <string name="snackbar_fill_in_the_fields">"заполните все поля "</string>
     <!--MainActivity end-->
 
-    <plurals name="pluralsPenguins">
+    <plurals name="penguins">
         <item quantity="one" tools:ignore="ImpliedQuantity">пингвин</item>
         <item quantity="few">пингвина</item>
         <item quantity="many">пингвинов</item>
         <item quantity="other">пингвинов</item>
     </plurals>
-    <plurals name="pluralsDays">
+    <plurals name="days">
         <item quantity="one" tools:ignore="ImpliedQuantity">день</item>
         <item quantity="few">дня</item>
         <item quantity="many">дней</item>
