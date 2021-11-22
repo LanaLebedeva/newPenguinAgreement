@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:contentDescription="@string/main_penguins_agreement"
@@ -25,10 +26,12 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_title"
+                style="@style/PenguinTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/PenguinTextView"
-                android:hint="@string/main_enter_title" />
+                android:hint="@string/main_enter_title"
+                android:textColorHint="@color/dove_gray"
+                tools:ignore="TextContrastCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -40,10 +43,12 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_subject"
+                style="@style/PenguinTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/PenguinTextView"
-                android:hint="@string/main_enter_subject" />
+                android:hint="@string/main_enter_subject"
+                android:textColorHint="@color/dove_gray"
+                tools:ignore="TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -93,7 +98,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/defaultBottom"
             android:text="@string/main_confirm_it"
-            android:textColor="@color/outer_space" />
+            android:textColor="@color/outer_space"
+            android:textColorHint="@color/outer_space"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/tv_agreement"
