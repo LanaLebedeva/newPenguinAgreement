@@ -2,16 +2,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Соглашение о пингвинах</string>
     <!-- MainActivity start-->
-    <string name="msg_title_enter">введите титул</string>
-    <string name="msg_subject_enter">введите предмет</string>
-    <string name="msg_enter_a_number_of_penguins">введите количество пингвинов</string>
+    <string name="text_title_enter">введите титул</string>
+    <string name="text_subject_enter">введите предмет</string>
+    <string name="text_enter_a_number_of_penguins">введите количество пингвинов</string>
     <string name="text_penguins">пингвинов</string>
-    <string name="msg_enter_the_numbers_of_days">введите количество дней</string>
+    <string name="text_enter_the_numbers_of_days">введите количество дней</string>
     <string name="text_days">дней</string>
-    <string name="btn_confirm_it">принять</string>
-    <string name="msg_there_will_be_an_agreement">Здесь будет соглашение</string>
+    <string name="text_confirm_it">принять</string>
+    <string name="text_there_will_be_an_agreement">Здесь будет соглашение</string>
     <string name="penguins_agreement">Соглашение о пингвинах</string>
-    <string name="snackbar_fill_in_the_fields">"заполните все поля "</string>
+    <string name="msg_fill_in_the_fields">"заполните все поля "</string>
     <!--MainActivity end-->
 
     <plurals name="penguins">
@@ -28,7 +28,7 @@
     </plurals>
 
     <!--Model-->
-    <string name="model_begin_agreement">Согласно заполненнным полям: </string>
-    <string name="model_end_agreement">Вы подтверждаете, что гарантируете оплату питания указанным животным в течение указанного срока</string>
+    <string name="text_begin_agreement">Согласно заполненнным полям: </string>
+    <string name="text_end_agreement">Вы подтверждаете, что гарантируете оплату питания указанным животным в течение указанного срока</string>
     <!--Model_end-->
 </resources>

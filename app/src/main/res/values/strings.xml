@@ -2,20 +2,20 @@
     <string name="app_name">Penguin agreement</string>
     <!-- MainActivity start-->
     <string name="penguins_agreement">penguins agreement</string>
-    <string name="msg_title_enter">enter title</string>
-    <string name="msg_subject_enter">enter subject</string>
-    <string name="msg_enter_a_number_of_penguins">enter a number of penguins</string>
+    <string name="text_title_enter">enter title</string>
+    <string name="text_subject_enter">enter subject</string>
+    <string name="text_enter_a_number_of_penguins">enter a number of penguins</string>
     <string name="text_penguins">penguins</string>
-    <string name="msg_enter_the_numbers_of_days">enter the numbers of days</string>
+    <string name="text_enter_the_numbers_of_days">enter the numbers of days</string>
     <string name="text_days">days</string>
-    <string name="btn_confirm_it">confirm it</string>
-    <string name="msg_there_will_be_an_agreement">there will be an agreement here</string>
-    <string name="snackbar_fill_in_the_fields">fill in the fields</string>
+    <string name="text_confirm_it">confirm it</string>
+    <string name="text_there_will_be_an_agreement">there will be an agreement here</string>
+    <string name="msg_fill_in_the_fields">fill in the fields</string>
     <!--MainActivity end-->
 
     <!--Model start-->
-    <string name="model_begin_agreement">According to the fields: </string>
-    <string name="model_end_agreement" >filled in. You confirm that you guarantee to pay for the food for the specified period of time</string>
+    <string name="text_begin_agreement">According to the fields: </string>
+    <string name="text_end_agreement" >filled in. You confirm that you guarantee to pay for the food for the specified period of time</string>
     <!--Model end-->
 
 

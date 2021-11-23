@@ -29,7 +29,7 @@
                 style="@style/PenguinTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/msg_title_enter"
+                android:hint="@string/text_title_enter"
                 android:textColorHint="@color/dove_gray"
                 tools:ignore="TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -45,7 +45,7 @@
                 style="@style/PenguinTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/msg_subject_enter"
+                android:hint="@string/text_subject_enter"
                 android:textColorHint="@color/dove_gray"
                 tools:ignore="TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -61,7 +61,7 @@
                 style="@style/PenguinTextView"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:hint="@string/msg_enter_a_number_of_penguins"
+                android:hint="@string/text_enter_a_number_of_penguins"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 style="@style/PenguinTextView"
                 android:layout_marginTop="@dimen/defaultMarginTop"
-                android:hint="@string/msg_enter_the_numbers_of_days"
+                android:hint="@string/text_enter_the_numbers_of_days"
                 android:inputType="number" />
 
             <TextView
@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/defaultBottom"
-            android:text="@string/btn_confirm_it"
+            android:text="@string/text_confirm_it"
             android:textColor="@color/outer_space"
             android:textColorHint="@color/outer_space"
             tools:ignore="TextContrastCheck" />
@@ -108,7 +108,7 @@
             android:layout_marginTop="@dimen/defaultBottom"
             android:layout_marginBottom="@dimen/defaultBottom"
             android:paddingBottom="@dimen/defaultPaddingBottom"
-            android:text="@string/msg_there_will_be_an_agreement"
+            android:text="@string/text_there_will_be_an_agreement"
             android:visibility="visible" />
     </LinearLayout>
 </ScrollView>
