@@ -38,26 +38,26 @@ class MainActivity : AppCompatActivity() {
             tvPenguins.text =
                 preferences.getString(STR_PENGUINS, resources.getString(R.string.text_penguins))
             tvDays.text = preferences.getString(STR_DAYS, resources.getString(R.string.text_days))
-            tvAgreement.text = preferences.getString(STR_KEY_AGREEMENT, resources.getString(R.string.msg_there_will_be_an_agreement))
+            tvAgreement.text = preferences.getString(
+                STR_KEY_AGREEMENT,
+                resources.getString(R.string.msg_there_will_be_an_agreement)
+            )
         }
     }
 
     private fun initTextChangeListeners() {
         binding.tvDaysNumber.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}
-            override fun beforeTextChanged( s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) =
                 makePlural(binding.tvDaysNumber.text.toString(), R.plurals.days)
         })
         binding.tvPenguinsNumber.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}
-            override fun beforeTextChanged( s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) =
                 makePlural(binding.tvPenguinsNumber.text.toString(), R.plurals.penguins)
         })
-        binding.btnConfirm.setOnClickListener {
-            makeAgreement()
-        }
     }
 
     private fun makePlural(number: String, plurals: Int) {
@@ -82,16 +82,21 @@ class MainActivity : AppCompatActivity() {
         val numberPenguins: String = binding.tvPenguinsNumber.text.toString()
         val numberDays: String = binding.tvDaysNumber.text.toString()
 
-        binding.tvAgreement.text = if (title != "" && subject != "" && numberPenguins != "" && numberDays != "") {
-            "${resources.getString(R.string.model_begin_agreement)} $title, $subject, $numberPenguins, $numberDays. ${
-                resources.getString(R.string.model_end_agreement)
-            }"
-        } else {
-            val contextView = findViewById<View>(R.id.linearLayout)
-            Snackbar.make(contextView, R.string.snackbar_fill_in_the_fields, Snackbar.LENGTH_SHORT)
-                .show()
-            resources.getString(R.string.msg_there_will_be_an_agreement)
-        }
+        binding.tvAgreement.text =
+            if (title != "" && subject != "" && numberPenguins != "" && numberDays != "") {
+                "${resources.getString(R.string.model_begin_agreement)} $title, $subject, $numberPenguins, $numberDays. ${
+                    resources.getString(R.string.model_end_agreement)
+                }"
+            } else {
+                val contextView = findViewById<View>(R.id.linearLayout)
+                Snackbar.make(
+                    contextView,
+                    R.string.snackbar_fill_in_the_fields,
+                    Snackbar.LENGTH_SHORT
+                )
+                    .show()
+                resources.getString(R.string.msg_there_will_be_an_agreement)
+            }
     }
 
     override fun onPause() {

@@ -32,7 +32,6 @@
                 android:hint="@string/msg_title_enter"
                 android:textColorHint="@color/dove_gray"
                 tools:ignore="TextContrastCheck" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
