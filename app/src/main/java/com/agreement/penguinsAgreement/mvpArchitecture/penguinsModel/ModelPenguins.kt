@@ -6,25 +6,26 @@ import com.agreement.penguinsAgreement.R
 import com.google.android.material.snackbar.Snackbar
 import java.lang.NumberFormatException
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
+import com.agreement.penguinsAgreement.mvpArchitecture.penguinsContract.PenguinsContract
 
-object ModelPenguins {
+object ModelPenguins: PenguinsContract.PenguinModel {
     internal var binding: ActivityMainBinding? = null
     internal var preferences: SharedPreferences? = null
     internal var resources: Resources? = null
 
-    fun setBinding(_binding: ActivityMainBinding) {
+    override fun setBinding(_binding: ActivityMainBinding) {
         binding = _binding
     }
 
-    fun setPreference(_preferences: SharedPreferences) {
+    override fun setPreference(_preferences: SharedPreferences) {
         preferences = _preferences
     }
 
-    fun setResources(_resources: Resources) {
+    override fun setResources(_resources: Resources) {
         resources = _resources
     }
 
-    fun makePlural(numberToString: String, plurals: Int) {
+    override fun makePlural(numberToString: String, plurals: Int) {
         val parsInt: Int = try {
             Integer.parseInt(numberToString)
         } catch (e: NumberFormatException) {
@@ -40,7 +41,7 @@ object ModelPenguins {
         }
     }
 
-    fun makeAgreement() {
+    override fun makeAgreement() {
         val title: String = binding?.tvTitle?.text.toString()
         val subject: String = binding?.tvSubject?.text.toString()
         val numberPenguins: String = binding?.tvPenguinsNumber?.text.toString()

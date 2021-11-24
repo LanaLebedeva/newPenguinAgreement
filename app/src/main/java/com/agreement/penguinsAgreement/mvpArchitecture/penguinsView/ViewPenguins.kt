@@ -5,11 +5,12 @@ import androidx.core.widget.doAfterTextChanged
 import com.agreement.penguinsAgreement.mvpArchitecture.penguinsModel.ModelPenguins
 import com.agreement.penguinsAgreement.mvpArchitecture.penguinsPresenter.PresenterPenguins
 import com.agreement.penguinsAgreement.R
+import com.agreement.penguinsAgreement.mvpArchitecture.penguinsContract.PenguinsContract
 
-class ViewPenguins {
+class ViewPenguins: PenguinsContract.PenguinView {
     private val presenter = PresenterPenguins
     private val model: ModelPenguins = ModelPenguins
-    fun initView() {
+    override fun initView() {
         with(model.binding) {
             this?.tvTitle?.setText(model.preferences?.getString(STR_KEY_TITLE, ""))
             this?.tvSubject?.setText(model.preferences?.getString(STR_KEY_SUBJECT, ""))
@@ -25,7 +26,7 @@ class ViewPenguins {
         }
     }
 
-    fun initListeners() {
+    override fun initListeners() {
         model.binding?.tvDaysNumber?.doAfterTextChanged {
             presenter.makePlural(model.binding?.tvDaysNumber?.text.toString(), R.plurals.days)
         }
@@ -38,7 +39,7 @@ class ViewPenguins {
         }
     }
 
-    fun onPauseViewPenguins() {
+    override fun onPauseViewPenguins() {
         val prefEditor: SharedPreferences.Editor? = model.preferences?.edit()
         with(prefEditor) {
             this?.putString(STR_KEY_TITLE, model.binding?.tvTitle?.text.toString())
