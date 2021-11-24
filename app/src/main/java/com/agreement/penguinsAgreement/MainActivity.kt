@@ -1,6 +1,5 @@
 package com.agreement.penguinsAgreement
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.agreement.penguinsAgreement.mvpArchitecture.penguinsModel.ModelPenguins
