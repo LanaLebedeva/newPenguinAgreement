@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        model.initModelPinguins(ActivityMainBinding.inflate(layoutInflater),getSharedPreferences(STR_FILE_SHARED_PREFERENCES, MODE_PRIVATE), resources)
+        model.initModelPinguins(ActivityMainBinding.inflate(layoutInflater),getSharedPreferences(FILE_STR_SHARED_PREFERENCES, MODE_PRIVATE), resources)
         setContentView(model.getBinding()?.root)
 
         viewPenguins = ViewPenguins()
@@ -29,6 +29,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val STR_FILE_SHARED_PREFERENCES = "TASK_PENGUIN"
+        private const val FILE_STR_SHARED_PREFERENCES = "TASK_PENGUIN"
     }
 }

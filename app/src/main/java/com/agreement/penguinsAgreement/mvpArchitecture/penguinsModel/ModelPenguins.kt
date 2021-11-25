@@ -2,11 +2,15 @@ package com.agreement.penguinsAgreement.mvpArchitecture.penguinsModel
 
 import android.content.SharedPreferences
 import android.content.res.Resources
+import android.util.Log
+import androidx.annotation.PluralsRes
 import com.agreement.penguinsAgreement.R
 import com.google.android.material.snackbar.Snackbar
 import java.lang.NumberFormatException
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
 import com.agreement.penguinsAgreement.mvpArchitecture.penguinsContract.PenguinsContract
+
+const val TAG = "PENGUIN AGREEMENT"
 
 object ModelPenguins: PenguinsContract.PenguinModel {
     private var binding: ActivityMainBinding? = null
@@ -25,20 +29,17 @@ object ModelPenguins: PenguinsContract.PenguinModel {
 
     override fun getResources() = resources
 
-    override fun makePlural(numberToString: String, plurals: Int) {
+    override fun updatePluralNumberViews(numberToString: String, @PluralsRes plurals: Int): String? {
         val parsInt: Int = try {
             Integer.parseInt(numberToString)
         } catch (e: NumberFormatException) {
             Integer.MAX_VALUE
+            Log.e(TAG, "The number of penguins or days greater than Integer.MAX_INT")
         }
-        val plural = resources?.getQuantityString(
+        return resources?.getQuantityString(
             plurals,
             parsInt
         )
-        when (plurals) {
-            R.plurals.penguins -> binding?.tvPenguins?.text = plural
-            R.plurals.days -> binding?.tvDays?.text = plural
-        }
     }
 
     override fun makeAgreement() {

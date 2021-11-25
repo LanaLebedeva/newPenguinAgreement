@@ -4,16 +4,19 @@ import android.content.SharedPreferences
 import android.content.res.Resources
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
 import com.agreement.penguinsAgreement.mvpArchitecture.penguinsModel.ModelPenguins
+import com.google.android.material.textfield.TextInputEditText
 
 interface PenguinsContract {
     interface PenguinView {
         fun initView()
         fun initListeners()
         fun onPauseViewPenguins()
+        fun setPenguins(pluralsNumber: String?)
+        fun setDays(pluralsNumber: String?)
     }
 
     interface PenguinPresenter {
-        fun makePlural(numberToString: String, plurals: Int)
+        fun updatePluralNumberViews(numberToString: String, plurals: Int): String?
         fun makeAgreement()
     }
 
@@ -22,7 +25,7 @@ interface PenguinsContract {
         fun getBinding(): ActivityMainBinding?
         fun getPreferences(): SharedPreferences?
         fun getResources(): Resources?
-        fun makePlural(numberToString: String, plurals: Int)
+        fun updatePluralNumberViews(numberToString: String, plurals: Int): String?
         fun makeAgreement()
     }
 }
