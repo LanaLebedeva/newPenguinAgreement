@@ -3,6 +3,7 @@
 
     <style name="PenguinTextView">
         <item name="android:background">@color/loafer</item>
-        <item name="android:textColorHint">@color/black</item>
+        <item name="android:textColorHint">@color/dove_gray</item>
+
     </style>
 </resources>

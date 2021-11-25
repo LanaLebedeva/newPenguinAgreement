@@ -45,9 +45,7 @@
                 style="@style/PenguinTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/text_title_enter"
-                android:textColorHint="@color/dove_gray"
-                tools:ignore="TextContrastCheck" />
+                android:hint="@string/text_title_enter"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -87,8 +85,6 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/text_enter_a_number_of_penguins"
                 android:inputType="number" />
-
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -106,9 +102,9 @@
             android:layout_width="@dimen/defaultLayoutWidth"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/defaultMarginVertical"
-            app:layout_constraintBottom_toTopOf="@+id/btn_confirm"
-            app:layout_constraintEnd_toEndOf="@+id/btn_confirm"
-            app:layout_constraintStart_toStartOf="@+id/btn_confirm"
+            app:layout_constraintBottom_toTopOf="@+id/btn_form_agreement"
+            app:layout_constraintEnd_toEndOf="@+id/btn_form_agreement"
+            app:layout_constraintStart_toStartOf="@+id/btn_form_agreement"
             app:layout_constraintTop_toBottomOf="@+id/tv_penguins">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -125,16 +121,16 @@
             android:layout_width="@dimen/defaultLayoutWidth"
             android:layout_height="wrap_content"
             android:text="@string/text_days"
-            app:layout_constraintBottom_toTopOf="@+id/btn_confirm"
+            app:layout_constraintBottom_toTopOf="@+id/btn_form_agreement"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout8" />
 
         <Button
-            android:id="@+id/btn_confirm"
+            android:id="@+id/btn_form_agreement"
             android:layout_width="@dimen/defaultLayoutWidth"
             android:layout_height="wrap_content"
-            android:text="@string/text_confirm_it"
+            android:text="@string/text_form_agreement"
             app:layout_constraintBottom_toTopOf="@+id/tv_agreement"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -149,8 +145,8 @@
             android:text="@string/text_there_will_be_an_agreement"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btn_confirm"
-            app:layout_constraintStart_toStartOf="@+id/btn_confirm"
-            app:layout_constraintTop_toBottomOf="@+id/btn_confirm" />
+            app:layout_constraintEnd_toEndOf="@+id/btn_form_agreement"
+            app:layout_constraintStart_toStartOf="@+id/btn_form_agreement"
+            app:layout_constraintTop_toBottomOf="@+id/btn_form_agreement" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
