@@ -27,7 +27,7 @@
             android:text="@string/text_message"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout5"
@@ -46,7 +46,8 @@
                 style="@style/PenguinTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/text_title_enter"/>
+                android:hint="@string/text_title_enter"
+                tools:text="@tools:sample/lorem"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -66,8 +67,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/text_subject_enter"
-                android:textColorHint="@color/dove_gray"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                tools:text="@tools:sample/lorem"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -147,7 +148,8 @@
             app:layout_constraintBottom_toTopOf="@+id/btm_confirm_it"
             app:layout_constraintEnd_toEndOf="@+id/btn_form_agreement"
             app:layout_constraintStart_toStartOf="@+id/btn_form_agreement"
-            app:layout_constraintTop_toBottomOf="@+id/btn_form_agreement" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_form_agreement"
+            tools:text="@tools:sample/lorem/random"/>
 
         <Button
             android:id="@+id/btm_confirm_it"
