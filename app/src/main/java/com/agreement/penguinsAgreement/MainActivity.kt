@@ -14,10 +14,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        model.setBinding(ActivityMainBinding.inflate(layoutInflater))
-        setContentView(model.binding?.root)
-        model.setPreference(getSharedPreferences(STR_FILE_SHARED_PREFERENCES, MODE_PRIVATE))
-        model.setResources(resources)
+        model.initModelPinguins(ActivityMainBinding.inflate(layoutInflater),getSharedPreferences(STR_FILE_SHARED_PREFERENCES, MODE_PRIVATE), resources)
+        setContentView(model.getBinding()?.root)
 
         viewPenguins = ViewPenguins()
 

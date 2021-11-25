@@ -9,21 +9,21 @@ import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
 import com.agreement.penguinsAgreement.mvpArchitecture.penguinsContract.PenguinsContract
 
 object ModelPenguins: PenguinsContract.PenguinModel {
-    internal var binding: ActivityMainBinding? = null
-    internal var preferences: SharedPreferences? = null
-    internal var resources: Resources? = null
+    private var binding: ActivityMainBinding? = null
+    private var preferences: SharedPreferences? = null
+    private var resources: Resources? = null
 
-    override fun setBinding(_binding: ActivityMainBinding) {
+    override fun initModelPinguins(_binding: ActivityMainBinding, _preferences: SharedPreferences, _resources: Resources) {
         binding = _binding
-    }
-
-    override fun setPreference(_preferences: SharedPreferences) {
         preferences = _preferences
-    }
-
-    override fun setResources(_resources: Resources) {
         resources = _resources
     }
+
+    override fun getBinding() = binding
+
+    override fun getPreferences() = preferences
+
+    override fun getResources() = resources
 
     override fun makePlural(numberToString: String, plurals: Int) {
         val parsInt: Int = try {
