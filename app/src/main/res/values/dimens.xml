@@ -6,4 +6,5 @@
     <dimen name="defaultBottom">16dp</dimen>
     <dimen name="defaultMarginTop">16dp</dimen>
     <dimen name="defaultPaddingBottom">32dp</dimen>
+    <dimen name="defaultPaddingBottomBtm">48dp</dimen>
 </resources>

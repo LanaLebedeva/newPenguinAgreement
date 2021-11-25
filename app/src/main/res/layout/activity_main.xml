@@ -11,6 +11,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/defaultPaddingBottomBtm"
         android:layout_marginStart="@dimen/defaultMarginHorizontal"
         android:layout_marginTop="@dimen/defaultMarginVertical"
         android:layout_marginEnd="@dimen/defaultMarginHorizontal"
@@ -134,8 +135,7 @@
             app:layout_constraintBottom_toTopOf="@+id/tv_agreement"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout8"
-            tools:ignore="TextContrastCheck" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout8" />
 
         <TextView
             android:id="@+id/tv_agreement"
@@ -144,9 +144,19 @@
             android:paddingBottom="@dimen/defaultPaddingBottom"
             android:text="@string/text_there_will_be_an_agreement"
             android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btm_confirm_it"
             app:layout_constraintEnd_toEndOf="@+id/btn_form_agreement"
             app:layout_constraintStart_toStartOf="@+id/btn_form_agreement"
             app:layout_constraintTop_toBottomOf="@+id/btn_form_agreement" />
+
+        <Button
+            android:id="@+id/btm_confirm_it"
+            android:layout_width="@dimen/defaultLayoutWidth"
+            android:layout_height="wrap_content"
+            android:text="@string/text_confirm_it"
+            app:layout_constraintBaseline_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_agreement"
+            app:layout_constraintStart_toStartOf="@+id/tv_agreement"
+            app:layout_constraintTop_toBottomOf="@+id/tv_agreement" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
