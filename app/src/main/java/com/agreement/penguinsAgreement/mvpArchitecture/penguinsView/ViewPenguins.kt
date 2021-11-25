@@ -33,7 +33,7 @@ class ViewPenguins: PenguinsContract.PenguinView {
         model.getBinding()?.tvPenguinsNumber?.doAfterTextChanged {
             presenter.makePlural(model.getBinding()?.tvPenguinsNumber?.text.toString(), R.plurals.penguins)
         }
-        model.getBinding()?.btnConfirm?.setOnClickListener {
+        model.getBinding()?.btnFormAgreement?.setOnClickListener {
             presenter.makeAgreement()
 
         }

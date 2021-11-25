@@ -8,14 +8,17 @@
     <string name="text_penguins">penguins</string>
     <string name="text_enter_the_numbers_of_days">enter the numbers of days</string>
     <string name="text_days">days</string>
+    <string name="text_form_agreement">form an agreement</string>
     <string name="text_confirm_it">confirm it</string>
     <string name="text_there_will_be_an_agreement">there will be an agreement here</string>
     <string name="msg_fill_in_the_fields">fill in the fields</string>
+    <string name="text_message">Fill out the fields to download the application</string>
     <!--MainActivity end-->
 
     <!--Model start-->
     <string name="text_begin_agreement">According to the fields: </string>
     <string name="text_end_agreement" >filled in. You confirm that you guarantee to pay for the food for the specified period of time</string>
+
     <!--Model end-->
 
 

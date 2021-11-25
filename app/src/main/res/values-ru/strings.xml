@@ -8,11 +8,19 @@
     <string name="text_penguins">пингвинов</string>
     <string name="text_enter_the_numbers_of_days">введите количество дней</string>
     <string name="text_days">дней</string>
+    <string name="text_form_agreement">сфомировать соглашение</string>
     <string name="text_confirm_it">принять</string>
     <string name="text_there_will_be_an_agreement">Здесь будет соглашение</string>
     <string name="penguins_agreement">Соглашение о пингвинах</string>
     <string name="msg_fill_in_the_fields">"заполните все поля "</string>
+    <string name="text_message">Заполните поля, чтобы загрузить приложение</string>
     <!--MainActivity end-->
+
+    <!--Model-->
+    <string name="text_begin_agreement">Согласно заполненнным полям: </string>
+    <string name="text_end_agreement">Вы подтверждаете, что гарантируете оплату питания указанным животным в течение указанного срока</string>
+    <!--Model_end-->
+
 
     <plurals name="penguins">
         <item quantity="one" tools:ignore="ImpliedQuantity">пингвин</item>
@@ -20,15 +28,11 @@
         <item quantity="many">пингвинов</item>
         <item quantity="other">пингвинов</item>
     </plurals>
+
     <plurals name="days">
         <item quantity="one" tools:ignore="ImpliedQuantity">день</item>
         <item quantity="few">дня</item>
         <item quantity="many">дней</item>
         <item quantity="other">дней</item>
     </plurals>
-
-    <!--Model-->
-    <string name="text_begin_agreement">Согласно заполненнным полям: </string>
-    <string name="text_end_agreement">Вы подтверждаете, что гарантируете оплату питания указанным животным в течение указанного срока</string>
-    <!--Model_end-->
 </resources>

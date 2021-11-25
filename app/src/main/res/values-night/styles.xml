@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="PenguinTextView">
-        <item name="android:background">@color/loafer</item>
+        <item name="android:background">@color/heavy_metal</item>
         <item name="android:textColorHint">@color/black</item>
     </style>
 </resources>
