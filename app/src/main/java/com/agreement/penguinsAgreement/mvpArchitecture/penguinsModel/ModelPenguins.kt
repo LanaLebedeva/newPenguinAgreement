@@ -42,27 +42,46 @@ object ModelPenguins: PenguinsContract.PenguinModel {
         )
     }
 
-    override fun makeAgreement() {
+    override fun updateAgreement() {
         val title: String = binding?.tvTitle?.text.toString()
         val subject: String = binding?.tvSubject?.text.toString()
         val numberPenguins: String = binding?.tvPenguinsNumber?.text.toString()
         val numberDays: String = binding?.tvDaysNumber?.text.toString()
 
-        binding?.tvAgreement?.text =
-            if (title != "" && subject != "" && numberPenguins != "" && numberDays != "") {
-                "${resources?.getString(R.string.text_begin_agreement)} $title, $subject, $numberPenguins, $numberDays. ${
-                    resources?.getString(R.string.text_end_agreement)
-                }"
-            } else {
-                binding?.linearLayout?.let {
-                    Snackbar.make(
-                        it,
-                        R.string.msg_fill_in_the_fields,
-                        Snackbar.LENGTH_SHORT
-                    )
-                        .show()
-                }
-                resources?.getString(R.string.text_there_will_be_an_agreement)
+        val fieldsNotEmpty =
+            title != "" && subject != "" && numberPenguins != "" && numberDays != ""
+        binding?.tvAgreement?.text = if (fieldsNotEmpty) {
+            resources?.getString(R.string.text_agreement, title, subject,numberPenguins, numberDays)
+        } else {
+            resources?.getString(R.string.text_there_will_be_an_agreement)
+        }
+        if (!fieldsNotEmpty) {
+            binding?.linearLayout?.let {
+                Snackbar.make(
+                    it,
+                    R.string.msg_fill_in_the_fields,
+                    Snackbar.LENGTH_SHORT
+                )
+                    .show()
             }
+        }
     }
+
+//        binding?.tvAgreement?.text =
+//            if (title != "" && subject != "" && numberPenguins != "" && numberDays != "") {
+//                "${resources?.getString(R.string.text_begin_agreement)} $title, $subject, $numberPenguins, $numberDays. ${
+//                    resources?.getString(R.string.text_end_agreement)
+//                }"
+//            } else {
+//                binding?.linearLayout?.let {
+//                    Snackbar.make(
+//                        it,
+//                        R.string.msg_fill_in_the_fields,
+//                        Snackbar.LENGTH_SHORT
+//                    )
+//                        .show()
+//                }
+//                resources?.getString(R.string.text_there_will_be_an_agreement)
+//            }
+//    }
 }

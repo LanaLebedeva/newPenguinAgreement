@@ -26,6 +26,6 @@ interface PenguinsContract {
         fun getPreferences(): SharedPreferences?
         fun getResources(): Resources?
         fun updatePluralNumberViews(numberToString: String, plurals: Int): String?
-        fun makeAgreement()
+        fun updateAgreement()
     }
 }

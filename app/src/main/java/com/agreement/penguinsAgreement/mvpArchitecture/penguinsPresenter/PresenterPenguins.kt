@@ -19,6 +19,6 @@ class PresenterPenguins(private val viewPenguin: ViewPenguins) : PenguinsContrac
     }
 
     override fun makeAgreement() {
-        ModelPenguins.makeAgreement()
+        ModelPenguins.updateAgreement()
     }
 }

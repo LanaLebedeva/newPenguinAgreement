@@ -16,8 +16,7 @@
     <!--MainActivity end-->
 
     <!--Model start-->
-    <string name="text_begin_agreement">According to the fields: </string>
-    <string name="text_end_agreement" >filled in. You confirm that you guarantee to pay for the food for the specified period of time</string>
+    <string name="text_agreement" formatted="true">According to the fields: %1$s, %2$s, %3$s, %4$s filled in. You confirm that you guarantee to pay for the food for the specified period of time</string>
 
     <!--Model end-->
 

@@ -17,8 +17,7 @@
     <!--MainActivity end-->
 
     <!--Model-->
-    <string name="text_begin_agreement">Согласно заполненнным полям: </string>
-    <string name="text_end_agreement">Вы подтверждаете, что гарантируете оплату питания указанным животным в течение указанного срока</string>
+    <string name="text_agreement" formatted="true">Согласно заполненнным полям: %1$s, %2$s, %3$s, %4$s Вы подтверждаете, что гарантируете оплату питания указанным животным в течение указанного срока</string>
     <!--Model_end-->
 
 
