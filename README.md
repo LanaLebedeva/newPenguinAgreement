@@ -31,3 +31,4 @@ Create one screen
 2. https://habr.com/ru/post/307798/                                                                          - Android string.xml
 3. https://www.youtube.com/watch?v=BlkJzgjzL0c                                                               - Android Application Architecture (Android Dev Summit 2015)
 4. https://hackernoon.com/https-medium-com-rohitss-android-app-architectures-mvp-with-kotlin-f255b236010a    - Android App Architectures: Example of MVP with Kotlin
+5. https://developer.android.com/studio/write/annotations                                                    - Improve code inspection with annotations

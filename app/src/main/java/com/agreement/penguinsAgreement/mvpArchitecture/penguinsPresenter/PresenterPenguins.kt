@@ -9,8 +9,11 @@ import com.agreement.penguinsAgreement.mvpArchitecture.penguinsView.ViewPenguins
 class PresenterPenguins(private val viewPenguin: ViewPenguins) : PenguinsContract.PenguinPresenter {
     //private val model: ModelPenguins = ModelPenguins
 
-    override fun updatePluralNumberViews(numberToString: String, @PluralsRes plurals: Int): String? {
-        val pluralsModel = ModelPenguins.updatePluralNumberViews(numberToString, plurals)
+    override fun updatePluralNumberTextViews(
+        numberToString: String,
+        @PluralsRes plurals: Int,
+    ): String? {
+        val pluralsModel: String? = ModelPenguins.updatePlural(numberToString, plurals)
         when (plurals) {
             R.plurals.penguins -> viewPenguin.setPenguins(pluralsModel)
             R.plurals.days -> viewPenguin.setDays(pluralsModel)
@@ -18,7 +21,9 @@ class PresenterPenguins(private val viewPenguin: ViewPenguins) : PenguinsContrac
         return pluralsModel
     }
 
-    override fun makeAgreement() {
-        ModelPenguins.updateAgreement()
+    override fun updateAgreementTextView():  String {
+        val agreementReturn = ModelPenguins.updateAgreement()
+        viewPenguin.setAgreement(agreementReturn)
+        return agreementReturn
     }
 }

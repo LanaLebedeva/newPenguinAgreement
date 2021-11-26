@@ -6,7 +6,7 @@ import com.agreement.penguinsAgreement.mvpArchitecture.penguinsModel.ModelPengui
 import com.agreement.penguinsAgreement.R
 import com.agreement.penguinsAgreement.mvpArchitecture.penguinsContract.PenguinsContract
 
-class ViewPenguins: PenguinsContract.PenguinView {
+class ViewPenguins : PenguinsContract.PenguinView {
     private val presenter =
         com.agreement.penguinsAgreement.mvpArchitecture.penguinsPresenter.PresenterPenguins(this)
     private val model: ModelPenguins = ModelPenguins
@@ -14,11 +14,14 @@ class ViewPenguins: PenguinsContract.PenguinView {
         with(model.getBinding()) {
             this?.tvTitle?.setText(model.getPreferences()?.getString(PREF_STR_TITLE, ""))
             this?.tvSubject?.setText(model.getPreferences()?.getString(PREF_STR_SUBJECT, ""))
-            this?.tvPenguinsNumber?.setText(model.getPreferences()?.getString(PREF_STR_NUMBER_PENGUINS, ""))
+            this?.tvPenguinsNumber?.setText(model.getPreferences()
+                ?.getString(PREF_STR_NUMBER_PENGUINS, ""))
             this?.tvDaysNumber?.setText(model.getPreferences()?.getString(PREF_STR_NUMBER_DAYS, ""))
             this?.tvPenguins?.text =
-                model.getPreferences()?.getString(PREF_STR_PENGUINS, model.getResources()?.getString(R.string.text_penguins))
-            this?.tvDays?.text = model.getPreferences()?.getString(PREF_STR_DAYS, model.getResources()?.getString(R.string.text_days))
+                model.getPreferences()?.getString(PREF_STR_PENGUINS,
+                    model.getResources()?.getString(R.string.text_penguins))
+            this?.tvDays?.text = model.getPreferences()
+                ?.getString(PREF_STR_DAYS, model.getResources()?.getString(R.string.text_days))
             this?.tvAgreement?.text = model.getPreferences()?.getString(
                 PREF_STR_AGREEMENT,
                 model.getResources()?.getString(R.string.text_there_will_be_an_agreement)
@@ -28,13 +31,15 @@ class ViewPenguins: PenguinsContract.PenguinView {
 
     override fun initListeners() {
         model.getBinding()?.tvDaysNumber?.doAfterTextChanged {
-            presenter.updatePluralNumberViews(model.getBinding()?.tvDaysNumber?.text.toString(), R.plurals.days)
+            presenter.updatePluralNumberTextViews(model.getBinding()?.tvDaysNumber?.text.toString(),
+                R.plurals.days)
         }
         model.getBinding()?.tvPenguinsNumber?.doAfterTextChanged {
-            presenter.updatePluralNumberViews(model.getBinding()?.tvPenguinsNumber?.text.toString(), R.plurals.penguins)
+            presenter.updatePluralNumberTextViews(model.getBinding()?.tvPenguinsNumber?.text.toString(),
+                R.plurals.penguins)
         }
         model.getBinding()?.btnFormAgreement?.setOnClickListener {
-            presenter.makeAgreement()
+            presenter.updateAgreementTextView()
         }
     }
 
@@ -43,7 +48,8 @@ class ViewPenguins: PenguinsContract.PenguinView {
         with(prefEditor) {
             this?.putString(PREF_STR_TITLE, model.getBinding()?.tvTitle?.text.toString())
             this?.putString(PREF_STR_SUBJECT, model.getBinding()?.tvSubject?.text.toString())
-            this?.putString(PREF_STR_NUMBER_PENGUINS, model.getBinding()?.tvPenguinsNumber?.text.toString())
+            this?.putString(PREF_STR_NUMBER_PENGUINS,
+                model.getBinding()?.tvPenguinsNumber?.text.toString())
             this?.putString(PREF_STR_NUMBER_DAYS, model.getBinding()?.tvDaysNumber?.text.toString())
             this?.putString(PREF_STR_PENGUINS, model.getBinding()?.tvPenguins?.text.toString())
             this?.putString(PREF_STR_DAYS, model.getBinding()?.tvDays?.text.toString())
@@ -58,6 +64,10 @@ class ViewPenguins: PenguinsContract.PenguinView {
 
     override fun setDays(pluralsNumber: String?) {
         model.getBinding()?.tvDays?.text = pluralsNumber
+    }
+
+    override fun setAgreement(agreementReturn: String) {
+        model.getBinding()?.tvAgreement?.text = agreementReturn
     }
 
     companion object {

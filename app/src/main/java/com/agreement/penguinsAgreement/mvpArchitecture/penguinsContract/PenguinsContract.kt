@@ -2,6 +2,7 @@ package com.agreement.penguinsAgreement.mvpArchitecture.penguinsContract
 
 import android.content.SharedPreferences
 import android.content.res.Resources
+import androidx.annotation.PluralsRes
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
 import com.agreement.penguinsAgreement.mvpArchitecture.penguinsModel.ModelPenguins
 import com.google.android.material.textfield.TextInputEditText
@@ -13,19 +14,25 @@ interface PenguinsContract {
         fun onPauseViewPenguins()
         fun setPenguins(pluralsNumber: String?)
         fun setDays(pluralsNumber: String?)
+        fun setAgreement(agreementReturn: String)
     }
 
     interface PenguinPresenter {
-        fun updatePluralNumberViews(numberToString: String, plurals: Int): String?
-        fun makeAgreement()
+        fun updatePluralNumberTextViews(numberToString: String, @PluralsRes plurals: Int): String?
+        fun updateAgreementTextView(): String
     }
 
     interface PenguinModel {
-        fun initModelPinguins(_binding: ActivityMainBinding, _preferences: SharedPreferences, _resources: Resources)
+        fun initModelPinguins(
+            _binding: ActivityMainBinding,
+            _preferences: SharedPreferences,
+            _resources: Resources,
+        )
+
         fun getBinding(): ActivityMainBinding?
         fun getPreferences(): SharedPreferences?
         fun getResources(): Resources?
-        fun updatePluralNumberViews(numberToString: String, plurals: Int): String?
-        fun updateAgreement()
+        fun updatePlural(numberToString: String, @PluralsRes plurals: Int): String?
+        fun updateAgreement(): String
     }
 }
