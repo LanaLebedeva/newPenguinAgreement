@@ -11,28 +11,22 @@ interface PenguinsContract {
     interface PenguinView {
         fun initView()
         fun initListeners()
-        fun onStopViewPenguins()
-        fun setPenguins(pluralsNumber: String?)
-        fun setDays(pluralsNumber: String?)
+        fun onSaveViewPenguins()
+        fun updatePenguins(pluralsNumber: String?)
+        fun updateDays(pluralsNumber: String?)
         fun setAgreement(agreementReturn: String)
     }
 
     interface PenguinPresenter {
         fun updatePluralNumberTextViews(numberToString: String, @PluralsRes plurals: Int): String?
-        fun updateAgreementTextView(): String
+        fun updateAgreementTextView()
     }
 
     interface PenguinModel {
-        fun initModelPinguins(
-            _binding: ActivityMainBinding,
-            _preferences: SharedPreferences,
-            _resources: Resources,
-        )
-
-        fun getBinding(): ActivityMainBinding?
+//        fun getBinding(): ActivityMainBinding?
         fun getPreferences(): SharedPreferences?
         fun getResources(): Resources?
         fun updatePlural(numberToString: String, @PluralsRes plurals: Int): String?
-        fun updateAgreement(): String
+        fun updateAgreement(): Boolean
     }
 }

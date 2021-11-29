@@ -7,23 +7,24 @@ import com.agreement.penguinsAgreement.mvpArchitecture.penguinsModel.ModelPengui
 import com.agreement.penguinsAgreement.mvpArchitecture.penguinsView.ViewPenguins
 
 class PresenterPenguins(private val viewPenguin: ViewPenguins) : PenguinsContract.PenguinPresenter {
-    //private val model: ModelPenguins = ModelPenguins
 
     override fun updatePluralNumberTextViews(
         numberToString: String,
         @PluralsRes plurals: Int,
-    ): String? {
-        val pluralsModel: String? = ModelPenguins.updatePlural(numberToString, plurals)
+    ): String {
+        val pluralsModel: String = ModelPenguins.updatePlural(numberToString, plurals)
         when (plurals) {
-            R.plurals.penguins -> viewPenguin.setPenguins(pluralsModel)
-            R.plurals.days -> viewPenguin.setDays(pluralsModel)
+            R.plurals.penguins -> viewPenguin.updatePenguins(pluralsModel)
+            R.plurals.days -> viewPenguin.updateDays(pluralsModel)
         }
         return pluralsModel
     }
 
-    override fun updateAgreementTextView():  String {
-        val agreementReturn = ModelPenguins.updateAgreement()
-        viewPenguin.setAgreement(agreementReturn)
-        return agreementReturn
+    override fun updateAgreementTextView() {
+        viewPenguin.onSaveViewPenguins()
+        if (!ModelPenguins.updateAgreement()) {
+            viewPenguin.setSnackbarAgreement()
+        }
+        viewPenguin.updateAgreement()
     }
 }

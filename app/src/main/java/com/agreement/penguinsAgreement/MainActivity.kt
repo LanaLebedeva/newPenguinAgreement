@@ -10,15 +10,17 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewPenguins: ViewPenguins
 
-    private val model: ModelPenguins = ModelPenguins
+    private var model: ModelPenguins = ModelPenguins
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        model.initModelPinguins(ActivityMainBinding.inflate(layoutInflater),getSharedPreferences(FILE_STR_SHARED_PREFERENCES, MODE_PRIVATE), resources)
-        setContentView(model.getBinding()?.root)
-
-        viewPenguins = ViewPenguins()
-
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        model.initPreferenceResources(
+            getSharedPreferences(FILE_STR_SHARED_PREFERENCES, MODE_PRIVATE),
+            resources
+        )
+        setContentView(binding.root)
+        viewPenguins = ViewPenguins(binding)
         if (savedInstanceState == null) {
             viewPenguins.initView()
         }
@@ -32,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        viewPenguins.onStopViewPenguins()
+        viewPenguins.onSaveViewPenguins()
     }
 
     companion object {
