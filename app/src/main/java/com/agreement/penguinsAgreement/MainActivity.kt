@@ -19,13 +19,20 @@ class MainActivity : AppCompatActivity() {
 
         viewPenguins = ViewPenguins()
 
-        viewPenguins.initView()
+        if (savedInstanceState == null) {
+            viewPenguins.initView()
+        }
         viewPenguins.initListeners()
     }
 
-    override fun onPause() {
-        super.onPause()
-        viewPenguins.onPauseViewPenguins()
+    override fun onStart() {
+        super.onStart()
+        viewPenguins.initView()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewPenguins.onStopViewPenguins()
     }
 
     companion object {

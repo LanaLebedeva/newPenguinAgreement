@@ -24,10 +24,13 @@
             android:layout_marginStart="@dimen/defaultMarginHorizontal"
             android:layout_marginTop="@dimen/defaultMarginTop"
             android:layout_marginEnd="@dimen/defaultMarginTop"
+            android:layout_marginBottom="8dp"
             android:text="@string/text_message"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="fjdsgkfjsdkl;jfksdg dfg dgfjsdkgfjsdkfjgs dfgkdsjfgsdklfjgsd jsdfkgjsdgklsjd;lflgj dsjklhj jh jhk"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout5"

@@ -30,5 +30,8 @@ Create one screen
 1. https://chir.ag/projects/name-that-color/#6195ED                                                          - color name
 2. https://habr.com/ru/post/307798/                                                                          - Android string.xml
 3. https://www.youtube.com/watch?v=BlkJzgjzL0c                                                               - Android Application Architecture (Android Dev Summit 2015)
+4. https://habr.com/ru/company/mobileup/blog/313538/                                                         - Различия между MVVM и остальными MV*-паттернами
 4. https://hackernoon.com/https-medium-com-rohitss-android-app-architectures-mvp-with-kotlin-f255b236010a    - Android App Architectures: Example of MVP with Kotlin
 5. https://developer.android.com/studio/write/annotations                                                    - Improve code inspection with annotations
+6. https://russianblogs.com/article/3950984614/                                                              - The Activity Lifecycle (in russian)
+7. https://developer.android.com/topic/libraries/architecture/saving-states                                  - Saving UI States

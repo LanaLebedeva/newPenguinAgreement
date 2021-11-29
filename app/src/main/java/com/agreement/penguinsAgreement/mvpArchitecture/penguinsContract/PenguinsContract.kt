@@ -11,7 +11,7 @@ interface PenguinsContract {
     interface PenguinView {
         fun initView()
         fun initListeners()
-        fun onPauseViewPenguins()
+        fun onStopViewPenguins()
         fun setPenguins(pluralsNumber: String?)
         fun setDays(pluralsNumber: String?)
         fun setAgreement(agreementReturn: String)

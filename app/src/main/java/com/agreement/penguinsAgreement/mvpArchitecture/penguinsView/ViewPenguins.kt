@@ -10,6 +10,7 @@ class ViewPenguins : PenguinsContract.PenguinView {
     private val presenter =
         com.agreement.penguinsAgreement.mvpArchitecture.penguinsPresenter.PresenterPenguins(this)
     private val model: ModelPenguins = ModelPenguins
+
     override fun initView() {
         with(model.getBinding()) {
             this?.tvTitle?.setText(model.getPreferences()?.getString(PREF_STR_TITLE, ""))
@@ -43,7 +44,7 @@ class ViewPenguins : PenguinsContract.PenguinView {
         }
     }
 
-    override fun onPauseViewPenguins() {
+    override fun onStopViewPenguins() {
         val prefEditor: SharedPreferences.Editor? = model.getPreferences()?.edit()
         with(prefEditor) {
             this?.putString(PREF_STR_TITLE, model.getBinding()?.tvTitle?.text.toString())
