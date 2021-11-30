@@ -23,12 +23,11 @@ class ModelBusiness{
         val parsInt: Int = try {
             Integer.parseInt(numberToString)
         } catch (e: NumberFormatException) {
-            Integer.MAX_VALUE
-            val e1 = Log.e(
+            Log.e(
                 "ModelPenguins",
                 "The number of penguins or days greater than Integer.MAX_INT"
             )
-            e1 // TODO понять что такое е1 и изменить название
+            Integer.MAX_VALUE
         }
         val pluralStr = resources.getQuantityString(plurals, parsInt)
         when (plurals) {
@@ -38,10 +37,6 @@ class ModelBusiness{
         return pluralStr
     }
     fun updateAgreement(): Boolean {
-//        val title: String = binding?.tvTitle?.text.toString()
-//        val subject: String = binding?.tvSubject?.text.toString()
-//        val numberPenguins: String = binding?.tvPenguinsNumber?.text.toString()
-//        val numberDays: String = binding?.tvDaysNumber?.text.toString()
         val title: String? = preferences.getString(PREF_STR_TITLE, "")
         val subject: String? = preferences.getString(PREF_STR_SUBJECT, "")
         val numberPenguins: String? = preferences.getString(PREF_STR_NUMBER_PENGUINS, "")

@@ -8,7 +8,7 @@ import com.agreement.penguinsAgreement.mvpArchitecture.penguinsView.ViewPenguins
 
 class PresenterPenguins(private val viewPenguin: ViewPenguins) : PenguinsContract.PenguinPresenter {
 
-    override fun updatePluralNumberTextViews(
+    override fun changedPluralNumberTextViews(
         numberToString: String,
         @PluralsRes plurals: Int,
     ): String {
@@ -20,7 +20,7 @@ class PresenterPenguins(private val viewPenguin: ViewPenguins) : PenguinsContrac
         return pluralsModel
     }
 
-    override fun updateAgreementTextView() {
+    override fun changedAgreementTextView() {
         viewPenguin.onSaveViewPenguins()
         if (!ModelPenguins.updateAgreement()) {
             viewPenguin.setSnackbarAgreement()

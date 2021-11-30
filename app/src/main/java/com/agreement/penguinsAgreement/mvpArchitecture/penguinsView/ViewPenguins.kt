@@ -35,22 +35,22 @@ class ViewPenguins(private val binding: ActivityMainBinding) : PenguinsContract.
     override fun initListeners() {
 
         binding.tvDaysNumber.doAfterTextChanged {
-            presenter.updatePluralNumberTextViews(binding.tvDaysNumber.text.toString(),
+            presenter.changedPluralNumberTextViews(binding.tvDaysNumber.text.toString(),
                 com.agreement.penguinsAgreement.R.plurals.days)
-            presenter.updateAgreementTextView()
+            presenter.changedAgreementTextView()
         }
         binding.tvPenguinsNumber.doAfterTextChanged {
-            presenter.updatePluralNumberTextViews(binding.tvPenguinsNumber.text.toString(),
+            presenter.changedPluralNumberTextViews(binding.tvPenguinsNumber.text.toString(),
                 com.agreement.penguinsAgreement.R.plurals.penguins)
         }
         binding.btnFormAgreement.setOnClickListener {
-            presenter.updateAgreementTextView()
+            presenter.changedAgreementTextView()
         }
         binding.tvDaysNumber.setOnKeyListener { _, keyCode, _ ->
            if (keyCode == android.view.KeyEvent.KEYCODE_ENTER) {
-               presenter.updateAgreementTextView()
+               presenter.changedAgreementTextView()
            }
-            true
+            false
         }
     }
 
