@@ -1,8 +1,9 @@
-package com.agreement.penguinsAgreement.mvpArchitecture.penguinsContract
+package com.agreement.penguinsAgreement.screenActivity.registration
 
 import android.content.SharedPreferences
 import android.content.res.Resources
 import androidx.annotation.PluralsRes
+import com.agreement.penguinsAgreement.utils.PreferenceUtil
 
 interface PenguinsContract {
     interface PenguinView {
@@ -16,12 +17,12 @@ interface PenguinsContract {
 
     interface PenguinPresenter {
         fun changedPluralNumberTextViews(numberToString: String, @PluralsRes plurals: Int): String?
-        fun changedAgreementTextView()
+        fun onFormAgreementClick()
     }
 
     interface PenguinModel {
 //        fun getBinding(): ActivityMainBinding?
-        fun getPreferences(): SharedPreferences?
+        fun getPreferences(): PreferenceUtil
         fun getResources(): Resources?
         fun updatePlural(numberToString: String, @PluralsRes plurals: Int): String?
         fun updateAgreement(): Boolean

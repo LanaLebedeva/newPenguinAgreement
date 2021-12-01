@@ -35,3 +35,6 @@ Create one screen
 5. https://developer.android.com/studio/write/annotations                                                    - Improve code inspection with annotations
 6. https://russianblogs.com/article/3950984614/                                                              - The Activity Lifecycle (in russian)
 7. https://developer.android.com/topic/libraries/architecture/saving-states                                  - Saving UI States
+8. http://www.fandroid.info/lecture-5-on-the-architecture-of-the-android-application-mvp-pattern/            - MVP with code
+9. https://medium.com/nuances-of-programming/делегаты-в-kotlin-дляandroid-используйте-силу-делегированных-свойств-в-разработке-под-android-ca4d88d42800
+                                                                                                             - delegate

@@ -1,10 +1,13 @@
-package com.agreement.penguinsAgreement
+package com.agreement.penguinsAgreement.screenActivity.registration
 
+import android.app.Activity
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.agreement.penguinsAgreement.mvpArchitecture.penguinsModel.ModelPenguins
-import com.agreement.penguinsAgreement.mvpArchitecture.penguinsView.ViewPenguins
+import com.agreement.penguinsAgreement.penguinsModel.ModelPenguins
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
+import com.agreement.penguinsAgreement.utils.PreferenceUtil
+import java.util.prefs.Preferences
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,10 +18,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
-        model.initPreferenceResources(
-            getSharedPreferences(FILE_STR_SHARED_PREFERENCES, MODE_PRIVATE),
-            resources
-        )
+        val preferences: PreferenceUtil = PreferenceUtil(this)
+//        model.initPreferenceResources(
+//            getSharedPreferences(FILE_STR_SHARED_PREFERENCES, MODE_PRIVATE),
+//            resources
+//        )
+        model.initPreferenceResources(preferences, resources)
         setContentView(binding.root)
         viewPenguins = ViewPenguins(binding)
         if (savedInstanceState == null) {

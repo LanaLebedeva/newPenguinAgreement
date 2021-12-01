@@ -18,6 +18,9 @@
 
     <!--Model-->
     <string name="text_agreement" formatted="true">Согласно заполненнным полям: %1$s, %2$s, %3$s, %4$s Вы подтверждаете, что гарантируете оплату питания указанным животным в течение указанного срока</string>
+    <string name="agreement">Соглашение</string>
+    <string name="back">Назад</string>
+    <string name="btn_continue">Продолжить</string>
     <!--Model_end-->
 
 

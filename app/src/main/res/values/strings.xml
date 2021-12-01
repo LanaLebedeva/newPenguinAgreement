@@ -17,9 +17,13 @@
 
     <!--Model start-->
     <string name="text_agreement" formatted="true">According to the fields: %1$s, %2$s, %3$s, %4$s filled in. You confirm that you guarantee to pay for the food for the specified period of time</string>
-
     <!--Model end-->
 
+    <!--Reconfirmation start-->
+    <string name="agreement">Agreement</string>
+    <string name="back">Back</string>
+    <string name="btn_continue">Continue</string>
+    <!--Reconfirmation end-->
 
     <plurals name="penguins">
         <item quantity="one">penguin</item>

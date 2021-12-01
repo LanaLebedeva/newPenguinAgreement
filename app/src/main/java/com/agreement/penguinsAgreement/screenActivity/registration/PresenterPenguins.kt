@@ -1,10 +1,8 @@
-package com.agreement.penguinsAgreement.mvpArchitecture.penguinsPresenter
+package com.agreement.penguinsAgreement.screenActivity.registration
 
 import androidx.annotation.PluralsRes
 import com.agreement.penguinsAgreement.R
-import com.agreement.penguinsAgreement.mvpArchitecture.penguinsContract.PenguinsContract
-import com.agreement.penguinsAgreement.mvpArchitecture.penguinsModel.ModelPenguins
-import com.agreement.penguinsAgreement.mvpArchitecture.penguinsView.ViewPenguins
+import com.agreement.penguinsAgreement.penguinsModel.ModelPenguins
 
 class PresenterPenguins(private val viewPenguin: ViewPenguins) : PenguinsContract.PenguinPresenter {
 
@@ -20,11 +18,15 @@ class PresenterPenguins(private val viewPenguin: ViewPenguins) : PenguinsContrac
         return pluralsModel
     }
 
-    override fun changedAgreementTextView() {
+    override fun onFormAgreementClick() {
         viewPenguin.onSaveViewPenguins()
         if (!ModelPenguins.updateAgreement()) {
             viewPenguin.setSnackbarAgreement()
         }
         viewPenguin.updateAgreement()
+    }
+
+    fun onConfirmClick() {
+        //TODO перейти на новый экрвн
     }
 }
