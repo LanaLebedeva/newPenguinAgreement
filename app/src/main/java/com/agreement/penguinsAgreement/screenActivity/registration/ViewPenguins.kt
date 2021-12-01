@@ -1,7 +1,7 @@
 package com.agreement.penguinsAgreement.screenActivity.registration
 
-import android.content.SharedPreferences
 import androidx.core.widget.doAfterTextChanged
+import com.agreement.penguinsAgreement.R
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
 import com.agreement.penguinsAgreement.penguinsModel.ModelPenguins
 import com.google.android.material.snackbar.Snackbar
@@ -18,56 +18,57 @@ class ViewPenguins(private val binding: ActivityMainBinding) : PenguinsContract.
             this.tvSubject.setText(model.getPreferences().getPrefStrSubject())
             this.tvPenguinsNumber.setText(model.getPreferences().getPrefStrNumberPenguins())
             this.tvDaysNumber.setText(model.getPreferences().getPrefStrNumberDays())
-            this.tvPenguins.text = model.getPreferences().getPrefStrPenguins()
-            this.tvDays.text = model.getPreferences().getPrefStrDays()
-            this.tvAgreement.text = model.getPreferences().getPrefStrAgreement()
-            // todo если null  то значение из ресурсов
-//            this.tvAgreement.text = model.getPreferences().getString(
-//                PREF_STR_AGREEMENT,
-//                model.getResources().getString(com.agreement.penguinsAgreement.R.string.text_there_will_be_an_agreement)
-//            )
+            this.tvPenguins.text =
+                model.getPreferences().getPrefStrPenguins() ?: model.getResources().getString(
+                    R.string.text_penguins
+                )
+            this.tvDays.text = model.getPreferences().getPrefStrDays() ?: model.getResources()
+                .getString(R.string.text_days)
+            this.tvAgreement.text =
+                model.getPreferences().getPrefStrAgreement() ?: model.getResources()
+                    .getString(R.string.text_there_will_be_an_agreement)
         }
     }
 
     override fun initListeners() {
 
         binding.tvDaysNumber.doAfterTextChanged {
-            presenter.changedPluralNumberTextViews(binding.tvDaysNumber.text.toString(),
-                com.agreement.penguinsAgreement.R.plurals.days)
+            presenter.onPluralNumberTextViewsChange(
+                binding.tvDaysNumber.text.toString(),
+                com.agreement.penguinsAgreement.R.plurals.days
+            )
             presenter.onFormAgreementClick()
         }
         binding.tvPenguinsNumber.doAfterTextChanged {
-            presenter.changedPluralNumberTextViews(binding.tvPenguinsNumber.text.toString(),
-                com.agreement.penguinsAgreement.R.plurals.penguins)
+            presenter.onPluralNumberTextViewsChange(
+                binding.tvPenguinsNumber.text.toString(),
+                com.agreement.penguinsAgreement.R.plurals.penguins
+            )
         }
         binding.btnFormAgreement.setOnClickListener {
             presenter.onFormAgreementClick()
         }
         binding.tvDaysNumber.setOnKeyListener { _, keyCode, _ ->
-           if (keyCode == android.view.KeyEvent.KEYCODE_ENTER) {
-               presenter.onFormAgreementClick()
-           }
+            if (keyCode == android.view.KeyEvent.KEYCODE_ENTER) {
+                presenter.onFormAgreementClick()
+            }
             false
         }
-        binding.btmConfirmIt.setOnClickListener{
+        binding.btmConfirmIt.setOnClickListener {
             presenter.onConfirmClick()
         }
     }
 
-    override fun onSaveViewPenguins() {
-//        val prefEditor: SharedPreferences.Editor? = model.getPreferences().edit()
-//        with(prefEditor) {
-//            this?.putString(PREF_STR_TITLE, binding.tvTitle.text.toString())
-//            this?.putString(PREF_STR_SUBJECT, binding.tvSubject.text.toString())
-//            this?.putString(
-//                PREF_STR_NUMBER_PENGUINS,
-//                binding.tvPenguinsNumber.text.toString())
-//            this?.putString(PREF_STR_NUMBER_DAYS, binding.tvDaysNumber.text.toString())
-//            this?.putString(PREF_STR_PENGUINS, binding.tvPenguins.text.toString())
-//            this?.putString(PREF_STR_DAYS, binding.tvDays.text.toString())
-//            this?.putString(PREF_STR_AGREEMENT, binding.tvAgreement.text.toString())
-//            this?.apply()
-//        }
+    override fun saveViewPenguins() {
+        with(model.getPreferences()) {
+            setPrefStrTitle(binding.tvTitle.text.toString())
+            setPrefStrSubject(binding.tvSubject.text.toString())
+            setPrefStrNumberPenguins(binding.tvPenguinsNumber.text.toString())
+            setPrefStrNumberDays(binding.tvDaysNumber.text.toString())
+            setPrefStrPenguins(binding.tvPenguins.text.toString())
+            setPrefStrDays(binding.tvDays.text.toString())
+            setPrefStrAgreement(binding.tvAgreement.text.toString())
+        }
     }
 
     override fun updatePenguins(pluralsNumber: String?) {
@@ -94,20 +95,8 @@ class ViewPenguins(private val binding: ActivityMainBinding) : PenguinsContract.
     }
 
     fun updateAgreement() {
-        binding.tvAgreement.text = model.getPreferences().getPrefStrAgreement()
-//        binding.tvAgreement.text = model.getPreferences().getString(
-//            PREF_STR_AGREEMENT,
-//            model.getResources().getString(com.agreement.penguinsAgreement.R.string.text_there_will_be_an_agreement)
-//        )
-    }
-
-    companion object {
-        private const val PREF_STR_AGREEMENT = "AGREEMENT_VARIABLE"
-        private const val PREF_STR_NUMBER_PENGUINS = "NUMBER_PENGUIN_VARIABLE"
-        private const val PREF_STR_NUMBER_DAYS = "NUMBER_DAYS_VARIABLE"
-        private const val PREF_STR_TITLE = "TITLE_KEY"
-        private const val PREF_STR_SUBJECT = "SUBJECT_KEY"
-        private const val PREF_STR_PENGUINS = "PENGUINS"
-        private const val PREF_STR_DAYS = "DAYS"
+        binding.tvAgreement.text =
+            model.getPreferences().getPrefStrAgreement() ?: model.getResources()
+                .getString(R.string.text_there_will_be_an_agreement)
     }
 }

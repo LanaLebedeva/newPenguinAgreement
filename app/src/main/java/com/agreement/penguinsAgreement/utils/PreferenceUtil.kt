@@ -39,13 +39,13 @@ class PreferenceUtil(context: Context){
         preferences.edit()?.putString(PREF_STR_SUBJECT, parameter)?.apply()
 
     fun getPrefStrPenguins(): String? =
-        preferences.getString(PREF_STR_PENGUINS, "penguins")
+        preferences.getString(PREF_STR_PENGUINS, null)
 
     fun setPrefStrPenguins(parameter: String) =
         preferences.edit()?.putString(PREF_STR_PENGUINS, parameter)?.apply()
 
     fun getPrefStrDays(): String? =
-        preferences.getString(PREF_STR_DAYS, "days")
+        preferences.getString(PREF_STR_DAYS, null)
 
     fun setPrefStrDays(parameter: String) =
         preferences.edit()?.putString(PREF_STR_DAYS, parameter)?.apply()

@@ -13,7 +13,6 @@ import java.lang.NumberFormatException
 object ModelPenguins: PenguinsContract.PenguinModel {
     private lateinit var preferences: PreferenceUtil
     private lateinit var resources: Resources
-    private var modelBusiness = ModelBusiness()
 
     fun initPreferenceResources(_preferences: PreferenceUtil, _resources: Resources) {
         preferences = _preferences
@@ -52,7 +51,7 @@ object ModelPenguins: PenguinsContract.PenguinModel {
         val numberDays:String? = preferences.getPrefStrNumberDays()
 
         val fieldsNotEmpty =
-            title != null && subject != null && numberPenguins != null && numberDays != null
+            title != "" && subject != "" && numberPenguins != "" && numberDays != ""
         val agreementStr= if (fieldsNotEmpty) {
             resources.getString(
                 R.string.text_agreement,

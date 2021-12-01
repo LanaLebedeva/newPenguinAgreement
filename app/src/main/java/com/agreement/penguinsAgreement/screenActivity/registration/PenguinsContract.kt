@@ -9,14 +9,14 @@ interface PenguinsContract {
     interface PenguinView {
         fun initView()
         fun initListeners()
-        fun onSaveViewPenguins()
+        fun saveViewPenguins()
         fun updatePenguins(pluralsNumber: String?)
         fun updateDays(pluralsNumber: String?)
         fun setAgreement(agreementReturn: String)
     }
 
     interface PenguinPresenter {
-        fun changedPluralNumberTextViews(numberToString: String, @PluralsRes plurals: Int): String?
+        fun onPluralNumberTextViewsChange(numberToString: String, @PluralsRes plurals: Int): String?
         fun onFormAgreementClick()
     }
 
