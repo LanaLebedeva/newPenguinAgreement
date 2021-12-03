@@ -60,8 +60,4 @@ class PreferenceUtil(context: Context){
         private const val PREF_STR_PENGUINS = "PENGUINS"
         private const val PREF_STR_DAYS = "DAYS"
     }
-
-    fun getAll(): MutableMap<String, *> {
-        TODO("Not yet implemented")
-    }
 }

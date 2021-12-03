@@ -10,7 +10,7 @@ import com.agreement.penguinsAgreement.penguinsModel.penguinsBusiness.ModelBusin
 import com.agreement.penguinsAgreement.utils.PreferenceUtil
 import java.lang.NumberFormatException
 
-object ModelPenguins: PenguinsContract.PenguinModel {
+object ModelPenguins {
     private lateinit var preferences: PreferenceUtil
     private lateinit var resources: Resources
 
@@ -19,11 +19,11 @@ object ModelPenguins: PenguinsContract.PenguinModel {
         resources = _resources
     }
 
-    override fun getPreferences() = preferences
+    fun getPreferences() = preferences
 
-    override fun getResources() = resources
+    fun getResources() = resources
 
-    override fun updatePlural(
+    fun updatePlural(
         numberToString: String,
         @PluralsRes plurals: Int,
     ): String {
@@ -44,7 +44,7 @@ object ModelPenguins: PenguinsContract.PenguinModel {
         return pluralStr
     }
 
-    override fun updateAgreement(): Boolean {
+    fun getAgreement(): String {
         val title: String? = preferences.getPrefStrTitle()
         val subject: String? = preferences.getPrefStrSubject()
         val numberPenguins: String? = preferences.getPrefStrNumberPenguins()
@@ -63,7 +63,13 @@ object ModelPenguins: PenguinsContract.PenguinModel {
             resources.getString(R.string.text_there_will_be_an_agreement)
         }
         preferences.setPrefStrAgreement(agreementStr)
-        return fieldsNotEmpty
+        return agreementStr
     }
 
+    fun updateAgreement(): Boolean {
+        if (getAgreement() == resources.getString(R.string.text_there_will_be_an_agreement)) {
+            return false
+        }
+        return true
+    }
 }

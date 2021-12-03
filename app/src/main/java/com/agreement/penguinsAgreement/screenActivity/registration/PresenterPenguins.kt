@@ -4,7 +4,7 @@ import androidx.annotation.PluralsRes
 import com.agreement.penguinsAgreement.R
 import com.agreement.penguinsAgreement.penguinsModel.ModelPenguins
 
-class PresenterPenguins(private val viewPenguin: ViewPenguins) : PenguinsContract.PenguinPresenter {
+class PresenterPenguins(private val viewPenguin: MainActivity) : PenguinsContract.PenguinPresenter {
 
     override fun onPluralNumberTextViewsChange(
         numberToString: String,
@@ -24,9 +24,5 @@ class PresenterPenguins(private val viewPenguin: ViewPenguins) : PenguinsContrac
             viewPenguin.setSnackbarAgreement()
         }
         viewPenguin.updateAgreement()
-    }
-
-    fun onConfirmClick() {
-        //TODO перейти на новый экрвн
     }
 }

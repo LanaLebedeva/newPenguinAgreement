@@ -37,7 +37,7 @@ class ModelBusiness{
         }
         return pluralStr
     }
-    fun updateAgreement(): Boolean {
+    fun getAgreement(): String {
         val title: String? = preferences.getPrefStrTitle()
         val subject: String? = preferences.getPrefStrSubject()
         val numberPenguins: String? = preferences.getPrefStrNumberPenguins()
@@ -55,6 +55,13 @@ class ModelBusiness{
             resources.getString(R.string.text_there_will_be_an_agreement)
         }
         preferences.setPrefStrAgreement(agreementStr)
-        return fieldsNotEmpty
+        return agreementStr
+    }
+
+    fun updateAgreement(): Boolean {
+        if (getAgreement() == resources.getString(R.string.text_there_will_be_an_agreement)) {
+            return false
+        }
+        return true
     }
 }

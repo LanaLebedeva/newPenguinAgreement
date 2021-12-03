@@ -21,8 +21,8 @@
 
     <!--Reconfirmation start-->
     <string name="agreement">Agreement</string>
-    <string name="back">Back</string>
-    <string name="btn_continue">Continue</string>
+    <string name="agree">Agree</string>
+    <string name="disagree">Disagree</string>
     <!--Reconfirmation end-->
 
     <plurals name="penguins">
