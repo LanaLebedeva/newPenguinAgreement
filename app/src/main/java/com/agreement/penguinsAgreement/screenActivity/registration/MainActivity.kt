@@ -23,9 +23,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val preferences = PreferenceUtil(this)
-        presenter = PresenterPenguins(this)
-
         model.initPreferenceResources(preferences, resources)
+        if (model.getPreferences().getPrefBoolOnAgreement()) {
+            val intent = Intent(this, AgreementActivity::class.java)
+            startActivity(intent)
+        }
+        presenter = PresenterPenguins(this)
         setContentView(binding.root)
         if (savedInstanceState == null) {
             initView()
@@ -39,8 +42,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onStop() {
-        super.onStop()
         saveViewPenguins()
+        super.onStop()
+
     }
 
     private fun initView() {
@@ -86,6 +90,7 @@ class MainActivity : AppCompatActivity() {
             false
         }
         binding.btmConfirmIt.setOnClickListener {
+            model.getPreferences().setPrefBoolOnAgreement(true)
             val intent = Intent(this, AgreementActivity::class.java)
             startActivity(intent)
         }
