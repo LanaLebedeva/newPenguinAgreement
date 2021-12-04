@@ -8,7 +8,6 @@ import com.agreement.penguinsAgreement.R
 import com.agreement.penguinsAgreement.penguinsModel.ModelPenguins
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
 import com.agreement.penguinsAgreement.screenActivity.agreement.AgreementActivity
-import com.agreement.penguinsAgreement.screenActivity.reconfirmation.ReconfirmationActivity
 import com.agreement.penguinsAgreement.utils.PreferenceUtil
 import com.google.android.material.snackbar.Snackbar
 
