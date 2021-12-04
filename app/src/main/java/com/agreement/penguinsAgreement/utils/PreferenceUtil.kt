@@ -5,8 +5,9 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 
 
-class PreferenceUtil(context: Context){
-    private val preferences: SharedPreferences = context.getSharedPreferences(FILE_STR_SHARED_PREFERENCES, MODE_PRIVATE)
+class PreferenceUtil(context: Context) {
+    private val preferences: SharedPreferences =
+        context.getSharedPreferences(FILE_STR_SHARED_PREFERENCES, MODE_PRIVATE)
 
     fun getPrefStrAgreement(): String? =
         preferences.getString(PREF_STR_AGREEMENT, null)

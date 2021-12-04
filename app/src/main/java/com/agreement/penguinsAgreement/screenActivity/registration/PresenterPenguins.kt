@@ -4,9 +4,9 @@ import androidx.annotation.PluralsRes
 import com.agreement.penguinsAgreement.R
 import com.agreement.penguinsAgreement.penguinsModel.ModelPenguins
 
-class PresenterPenguins(private val viewPenguin: MainActivity) : PenguinsContract.PenguinPresenter {
+class PresenterPenguins(private val viewPenguin: MainActivity) {
 
-    override fun onPluralNumberTextViewsChange(
+    fun onPluralNumberTextViewsChange(
         numberToString: String,
         @PluralsRes plurals: Int,
     ): String {
@@ -18,7 +18,7 @@ class PresenterPenguins(private val viewPenguin: MainActivity) : PenguinsContrac
         return pluralsModel
     }
 
-    override fun onFormAgreementClick() {
+    fun onFormAgreementClick() {
         viewPenguin.saveViewPenguins()
         if (!ModelPenguins.updateAgreement()) {
             viewPenguin.setSnackbarAgreement()

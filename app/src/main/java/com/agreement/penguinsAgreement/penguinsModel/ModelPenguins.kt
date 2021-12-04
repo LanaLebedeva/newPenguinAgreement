@@ -1,12 +1,9 @@
 package com.agreement.penguinsAgreement.penguinsModel
 
-import android.content.SharedPreferences
 import android.content.res.Resources
 import android.util.Log
 import androidx.annotation.PluralsRes
 import com.agreement.penguinsAgreement.R
-import com.agreement.penguinsAgreement.screenActivity.registration.PenguinsContract
-import com.agreement.penguinsAgreement.penguinsModel.penguinsBusiness.ModelBusiness
 import com.agreement.penguinsAgreement.utils.PreferenceUtil
 import java.lang.NumberFormatException
 
@@ -48,17 +45,18 @@ object ModelPenguins {
         val title: String? = preferences.getPrefStrTitle()
         val subject: String? = preferences.getPrefStrSubject()
         val numberPenguins: String? = preferences.getPrefStrNumberPenguins()
-        val numberDays:String? = preferences.getPrefStrNumberDays()
+        val numberDays: String? = preferences.getPrefStrNumberDays()
 
         val fieldsNotEmpty =
             title != "" && subject != "" && numberPenguins != "" && numberDays != ""
-        val agreementStr= if (fieldsNotEmpty) {
+        val agreementStr = if (fieldsNotEmpty) {
             resources.getString(
                 R.string.text_agreement,
                 title,
                 subject,
                 numberPenguins,
-                numberDays)
+                numberDays
+            )
         } else {
             resources.getString(R.string.text_there_will_be_an_agreement)
         }

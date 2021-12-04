@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         super.onStop()
         saveViewPenguins()
     }
+
     private fun initView() {
         with(binding) {
             tvTitle.setText(model.getPreferences().getPrefStrTitle())
@@ -108,10 +109,6 @@ class MainActivity : AppCompatActivity() {
 
     fun updateDays(pluralsNumber: String?) {
         binding.tvDays.text = pluralsNumber
-    }
-
-    fun setAgreement(agreementReturn: String) {
-        binding.tvAgreement.text = agreementReturn
     }
 
     fun setSnackbarAgreement() {
