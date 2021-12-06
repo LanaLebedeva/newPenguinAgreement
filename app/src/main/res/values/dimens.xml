@@ -7,4 +7,5 @@
     <dimen name="defaultMarginTop">16dp</dimen>
     <dimen name="defaultPaddingBottom">16dp</dimen>
     <dimen name="defaultPaddingBottomBtm">54dp</dimen>
+    <dimen name="defaultMarginBottom">8dp</dimen>
 </resources>
