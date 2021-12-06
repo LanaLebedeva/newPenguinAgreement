@@ -51,6 +51,12 @@ class PreferenceUtil(context: Context) {
     fun setPrefStrDays(parameter: String) =
         preferences.edit()?.putString(PREF_STR_DAYS, parameter)?.apply()
 
+    fun getPrefBoolOnAgreement(): Boolean =
+        preferences.getBoolean(PREF_BOOL_ON_AGREEMENT, false)
+
+    fun setPrefBoolOnAgreement(parameter: Boolean) =
+        preferences.edit()?.putBoolean(PREF_BOOL_ON_AGREEMENT, parameter)?.apply()
+
     companion object {
         private const val FILE_STR_SHARED_PREFERENCES = "TASK_PENGUIN"
         private const val PREF_STR_AGREEMENT = "AGREEMENT_VARIABLE"
@@ -60,5 +66,6 @@ class PreferenceUtil(context: Context) {
         private const val PREF_STR_SUBJECT = "SUBJECT_KEY"
         private const val PREF_STR_PENGUINS = "PENGUINS"
         private const val PREF_STR_DAYS = "DAYS"
+        private const val PREF_BOOL_ON_AGREEMENT = "ON_AGREEMENT"
     }
 }

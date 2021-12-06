@@ -8,7 +8,7 @@
 
     <ScrollView
         android:id="@+id/sv_scrollView"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/defaultLayoutWidth"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,9 +24,9 @@
 
             <TextView
                 android:id="@+id/tv_headline"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/defaultLayoutWidth"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/defaultMarginTop"
                 android:text="@string/agreement"
                 android:textAlignment="center"
                 android:textStyle="bold"
@@ -39,10 +39,10 @@
 
             <TextView
                 android:id="@+id/tv_agreementText"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/defaultLayoutWidth"
                 android:layout_height="wrap_content"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
+                android:paddingStart="@dimen/defaultPaddingBottom"
+                android:paddingEnd="@dimen/defaultPaddingBottom"
                 app:layout_constrainedHeight="true"
                 app:layout_constrainedWidth="false"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -55,10 +55,10 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/defaultLayoutWidth"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="@dimen/defaultMarginTop"
+                android:layout_marginBottom="@dimen/defaultMarginBottom"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="@dimen/defaultMarginBottom"
                     android:enabled="false"
                     android:text="@string/agree" />
 
@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="@dimen/defaultMarginBottom"
                     android:enabled="true"
                     android:text="@string/disagree" />
             </LinearLayout>

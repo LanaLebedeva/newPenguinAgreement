@@ -24,8 +24,14 @@ class AgreementActivity : AppCompatActivity() {
     private fun initListeners() {
         bindingAgreement.btnAgree.setOnClickListener {}
         bindingAgreement.btnDisagree.setOnClickListener {
+            ModelPenguins.getPreferences().setPrefBoolOnAgreement(false)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onBackPressed() {
+        ModelPenguins.getPreferences().setPrefBoolOnAgreement(false)
+        super.onBackPressed()
     }
 }

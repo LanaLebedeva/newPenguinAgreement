@@ -16,16 +16,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var presenter: PresenterPenguins
     private lateinit var binding: ActivityMainBinding
 
-
-    private var model: ModelPenguins = ModelPenguins
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val preferences = PreferenceUtil(this)
-        presenter = PresenterPenguins(this)
 
-        model.initPreferenceResources(preferences, resources)
+        val preferences = PreferenceUtil(this)
+        ModelPenguins.initPreferenceResources(preferences, resources)
+        if (ModelPenguins.getPreferences().getPrefBoolOnAgreement()) {
+            val intent = Intent(this, AgreementActivity::class.java)
+            startActivity(intent)
+        }
+        presenter = PresenterPenguins(this)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         if (savedInstanceState == null) {
             initView()
@@ -39,24 +40,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onStop() {
-        super.onStop()
         saveViewPenguins()
+        super.onStop()
+
     }
 
     private fun initView() {
         with(binding) {
-            tvTitle.setText(model.getPreferences().getPrefStrTitle())
-            tvSubject.setText(model.getPreferences().getPrefStrSubject())
-            tvPenguinsNumber.setText(model.getPreferences().getPrefStrNumberPenguins())
-            tvDaysNumber.setText(model.getPreferences().getPrefStrNumberDays())
+            tvTitle.setText(ModelPenguins.getPreferences().getPrefStrTitle())
+            tvSubject.setText(ModelPenguins.getPreferences().getPrefStrSubject())
+            tvPenguinsNumber.setText(ModelPenguins.getPreferences().getPrefStrNumberPenguins())
+            tvDaysNumber.setText(ModelPenguins.getPreferences().getPrefStrNumberDays())
             tvPenguins.text =
-                model.getPreferences().getPrefStrPenguins() ?: model.getResources().getString(
-                    R.string.text_penguins
-                )
-            tvDays.text = model.getPreferences().getPrefStrDays() ?: model.getResources()
-                .getString(R.string.text_days)
+                ModelPenguins.getPreferences().getPrefStrPenguins() ?: ModelPenguins.getResources()
+                    .getString(
+                        R.string.text_penguins
+                    )
+            tvDays.text =
+                ModelPenguins.getPreferences().getPrefStrDays() ?: ModelPenguins.getResources()
+                    .getString(R.string.text_days)
             tvAgreement.text =
-                model.getPreferences().getPrefStrAgreement() ?: model.getResources()
+                ModelPenguins.getPreferences().getPrefStrAgreement() ?: ModelPenguins.getResources()
                     .getString(R.string.text_there_will_be_an_agreement)
         }
     }
@@ -86,13 +90,14 @@ class MainActivity : AppCompatActivity() {
             false
         }
         binding.btmConfirmIt.setOnClickListener {
+            ModelPenguins.getPreferences().setPrefBoolOnAgreement(true)
             val intent = Intent(this, AgreementActivity::class.java)
             startActivity(intent)
         }
     }
 
     fun saveViewPenguins() {
-        with(model.getPreferences()) {
+        with(ModelPenguins.getPreferences()) {
             setPrefStrTitle(binding.tvTitle.text.toString())
             setPrefStrSubject(binding.tvSubject.text.toString())
             setPrefStrNumberPenguins(binding.tvPenguinsNumber.text.toString())
@@ -124,7 +129,7 @@ class MainActivity : AppCompatActivity() {
 
     fun updateAgreement() {
         binding.tvAgreement.text =
-            model.getPreferences().getPrefStrAgreement() ?: model.getResources()
+            ModelPenguins.getPreferences().getPrefStrAgreement() ?: ModelPenguins.getResources()
                 .getString(R.string.text_there_will_be_an_agreement)
     }
 }
