@@ -92,6 +92,7 @@ class MainActivity : AppCompatActivity() {
         binding.btmConfirmIt.setOnClickListener {
             ModelPenguins.getPreferences().setPrefBoolOnAgreement(true)
             val intent = Intent(this, AgreementActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
     }
