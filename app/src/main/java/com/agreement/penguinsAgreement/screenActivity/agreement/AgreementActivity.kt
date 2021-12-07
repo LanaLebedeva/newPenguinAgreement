@@ -26,7 +26,7 @@ class AgreementActivity : AppCompatActivity() {
         bindingAgreement.btnDisagree.setOnClickListener {
             ModelPenguins.getPreferences().setPrefBoolOnAgreement(false)
             val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
     }
