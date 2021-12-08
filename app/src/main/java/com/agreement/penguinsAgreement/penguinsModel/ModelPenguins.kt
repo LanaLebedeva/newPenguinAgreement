@@ -2,10 +2,8 @@ package com.agreement.penguinsAgreement.penguinsModel
 
 import android.content.res.Resources
 import android.util.Log
-import androidx.annotation.PluralsRes
 import com.agreement.penguinsAgreement.R
 import com.agreement.penguinsAgreement.utils.PreferenceUtil
-import java.lang.NumberFormatException
 
 object ModelPenguins {
     private lateinit var preferences: PreferenceUtil
@@ -20,25 +18,36 @@ object ModelPenguins {
 
     fun getResources() = resources
 
-    fun updatePlural(
-        numberToString: String,
-        @PluralsRes plurals: Int,
-    ): String {
+    fun getPluralPenguins(): String {
         val parsInt: Int = try {
-            Integer.parseInt(numberToString)
+            Integer.parseInt(
+                getPreferences().getPrefStrNumberPenguins()
+                    ?: resources.getString(R.string.text_penguins)
+            )
         } catch (e: NumberFormatException) {
             Log.e(
                 "ModelPenguins",
-                "The number of penguins or days greater than Integer.MAX_INT"
+                "The number of penguins greater than Integer.MAX_INT"
             )
             Integer.MAX_VALUE
         }
-        val pluralStr = resources.getQuantityString(plurals, parsInt)
-        when (plurals) {
-            R.plurals.penguins -> preferences.setPrefStrPenguins(pluralStr)
-            R.plurals.days -> preferences.setPrefStrDays(pluralStr)
+        return resources.getQuantityString(R.plurals.penguins, parsInt)
+    }
+
+    fun getPluralDays(): String {
+        val parsInt: Int = try {
+            Integer.parseInt(
+                getPreferences().getPrefStrNumberDays()
+                    ?: resources.getString(R.string.text_days)
+            )
+        } catch (e: NumberFormatException) {
+            Log.e(
+                "ModelPenguins",
+                "The number of days greater than Integer.MAX_INT"
+            )
+            Integer.MAX_VALUE
         }
-        return pluralStr
+        return resources.getQuantityString(R.plurals.days, parsInt)
     }
 
     fun getAgreement(): String {
@@ -60,7 +69,6 @@ object ModelPenguins {
         } else {
             resources.getString(R.string.text_there_will_be_an_agreement)
         }
-        preferences.setPrefStrAgreement(agreementStr)
         return agreementStr
     }
 
@@ -69,5 +77,13 @@ object ModelPenguins {
             return false
         }
         return true
+    }
+
+    fun updatePenguinsNumber(numberPenguins: String) {
+        preferences.setPrefStrNumberPenguins(numberPenguins)
+    }
+
+    fun updateDaysNumber(numberDays: String) {
+        preferences.setPrefStrNumberDays(numberDays)
     }
 }

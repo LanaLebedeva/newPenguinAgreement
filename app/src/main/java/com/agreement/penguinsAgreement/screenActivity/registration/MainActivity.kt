@@ -5,83 +5,60 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.agreement.penguinsAgreement.R
-import com.agreement.penguinsAgreement.penguinsModel.ModelPenguins
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
 import com.agreement.penguinsAgreement.screenActivity.agreement.AgreementActivity
 import com.agreement.penguinsAgreement.utils.PreferenceUtil
 import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ViewRegistration {
 
     private lateinit var presenter: PresenterPenguins
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val preferences = PreferenceUtil(this)
-        ModelPenguins.initPreferenceResources(preferences, resources)
-        if (ModelPenguins.getPreferences().getPrefBoolOnAgreement()) {
-            val intent = Intent(this, AgreementActivity::class.java)
-            startActivity(intent)
-        }
-        presenter = PresenterPenguins(this)
+        presenter = PresenterPenguins()
+        presenter.initPresenter(this)
+        presenter.checkLeadingActivity(PreferenceUtil(this), resources)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         if (savedInstanceState == null) {
-            initView()
+            presenter.initView()
         }
         initListeners()
     }
 
     override fun onStart() {
         super.onStart()
-        initView()
+        presenter.initView()
     }
 
     override fun onStop() {
-        saveViewPenguins()
+        presenter.saveViewPenguins(
+            binding.tvTitle.text.toString(),
+            binding.tvSubject.text.toString(),
+            binding.tvPenguinsNumber.text.toString(),
+            binding.tvDaysNumber.text.toString()
+        )
         super.onStop()
 
     }
 
-    private fun initView() {
-        with(binding) {
-            tvTitle.setText(ModelPenguins.getPreferences().getPrefStrTitle())
-            tvSubject.setText(ModelPenguins.getPreferences().getPrefStrSubject())
-            tvPenguinsNumber.setText(ModelPenguins.getPreferences().getPrefStrNumberPenguins())
-            tvDaysNumber.setText(ModelPenguins.getPreferences().getPrefStrNumberDays())
-            tvPenguins.text =
-                ModelPenguins.getPreferences().getPrefStrPenguins() ?: ModelPenguins.getResources()
-                    .getString(
-                        R.string.text_penguins
-                    )
-            tvDays.text =
-                ModelPenguins.getPreferences().getPrefStrDays() ?: ModelPenguins.getResources()
-                    .getString(R.string.text_days)
-            tvAgreement.text =
-                ModelPenguins.getPreferences().getPrefStrAgreement() ?: ModelPenguins.getResources()
-                    .getString(R.string.text_there_will_be_an_agreement)
-        }
-    }
-
-    private fun initListeners() {
-
+    override fun initListeners() {
         binding.tvDaysNumber.doAfterTextChanged {
-            presenter.onPluralNumberTextViewsChange(
-                binding.tvDaysNumber.text.toString(),
-                R.plurals.days
-            )
-            presenter.onFormAgreementClick()
+            presenter.onDaysNumberTextViewChange(binding.tvDaysNumber.text.toString())
         }
         binding.tvPenguinsNumber.doAfterTextChanged {
-            presenter.onPluralNumberTextViewsChange(
-                binding.tvPenguinsNumber.text.toString(),
-                R.plurals.penguins
-            )
+            presenter.onPenguinsNumberTextViewChange(binding.tvPenguinsNumber.text.toString())
         }
         binding.btnFormAgreement.setOnClickListener {
             presenter.onFormAgreementClick()
+        }
+        binding.tvTitle.doAfterTextChanged {
+            presenter.onTitleTextViewChange(binding.tvTitle.text.toString())
+        }
+        binding.tvSubject.doAfterTextChanged {
+            presenter.onSubjectTextViewChange(binding.tvSubject.text.toString())
         }
         binding.tvDaysNumber.setOnKeyListener { _, keyCode, _ ->
             if (keyCode == android.view.KeyEvent.KEYCODE_ENTER) {
@@ -90,34 +67,39 @@ class MainActivity : AppCompatActivity() {
             false
         }
         binding.btmConfirmIt.setOnClickListener {
-            ModelPenguins.getPreferences().setPrefBoolOnAgreement(true)
-            val intent = Intent(this, AgreementActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            presenter.onConfirmItClick()
         }
     }
 
-    fun saveViewPenguins() {
-        with(ModelPenguins.getPreferences()) {
-            setPrefStrTitle(binding.tvTitle.text.toString())
-            setPrefStrSubject(binding.tvSubject.text.toString())
-            setPrefStrNumberPenguins(binding.tvPenguinsNumber.text.toString())
-            setPrefStrNumberDays(binding.tvDaysNumber.text.toString())
-            setPrefStrPenguins(binding.tvPenguins.text.toString())
-            setPrefStrDays(binding.tvDays.text.toString())
-            setPrefStrAgreement(binding.tvAgreement.text.toString())
-        }
+    override fun updateAgreement(agreement: String) {
+        binding.tvAgreement.text = agreement
     }
 
-    fun updatePenguins(pluralsNumber: String?) {
+    override fun updateTitle(title: String) {
+        binding.tvTitle.setText(title)
+    }
+
+    override fun updateSubject(subject: String) {
+        binding.tvSubject.setText(subject)
+    }
+
+    override fun updateNumberPenguins(numberPenguins: String) {
+        binding.tvPenguinsNumber.setText(numberPenguins)
+    }
+
+    override fun updatePenguins(pluralsNumber: String) {
         binding.tvPenguins.text = pluralsNumber
     }
 
-    fun updateDays(pluralsNumber: String?) {
+    override fun updateNumberDays(numberDays: String) {
+        binding.tvDaysNumber.setText(numberDays)
+    }
+
+    override fun updateDays(pluralsNumber: String) {
         binding.tvDays.text = pluralsNumber
     }
 
-    fun setSnackbarAgreement() {
+    override fun setSnackbarAgreement() {
         binding.constraintLayout.let {
             Snackbar.make(
                 it,
@@ -128,9 +110,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun updateAgreement() {
-        binding.tvAgreement.text =
-            ModelPenguins.getPreferences().getPrefStrAgreement() ?: ModelPenguins.getResources()
-                .getString(R.string.text_there_will_be_an_agreement)
+    override fun startAgreement() {
+        val intent = Intent(this, AgreementActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
     }
 }
