@@ -20,9 +20,9 @@ class PresenterPenguins(private val viewPenguin: MainActivity) {
 
     fun onFormAgreementClick() {
         viewPenguin.saveViewPenguins()
-        if (!ModelPenguins.updateAgreement()) {
-            viewPenguin.setSnackbarAgreement()
-        }
+//        if (!ModelPenguins.updateAgreement()) {
+//            viewPenguin.setSnackbarAgreement()
+//        }
         viewPenguin.updateAgreement()
     }
 }

@@ -11,11 +11,11 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/defaultPaddingBottomBtm"
         android:layout_marginStart="@dimen/defaultMarginHorizontal"
         android:layout_marginTop="@dimen/defaultMarginVertical"
         android:layout_marginEnd="@dimen/defaultMarginHorizontal"
-        android:layout_marginBottom="@dimen/defaultMarginVertical">
+        android:layout_marginBottom="@dimen/defaultMarginVertical"
+        android:paddingBottom="@dimen/defaultPaddingBottomBtm">
 
         <TextView
             android:id="@+id/tv_message"
@@ -48,10 +48,10 @@
                 style="@style/PenguinTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/text_title_enter"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:hint="@string/text_title_enter"
-                tools:text="@tools:sample/lorem"/>
+                tools:text="@tools:sample/lorem" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -73,7 +73,7 @@
                 android:hint="@string/text_subject_enter"
                 android:maxLines="1"
                 android:singleLine="true"
-                tools:text="@tools:sample/lorem"/>
+                tools:text="@tools:sample/lorem" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -132,8 +132,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout8"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout8" />
 
         <Button
             android:id="@+id/btn_form_agreement"
@@ -156,7 +155,7 @@
             app:layout_constraintEnd_toEndOf="@+id/btn_form_agreement"
             app:layout_constraintStart_toStartOf="@+id/btn_form_agreement"
             app:layout_constraintTop_toBottomOf="@+id/btn_form_agreement"
-            tools:text="@tools:sample/lorem/random"/>
+            tools:text="@tools:sample/lorem/random" />
 
         <Button
             android:id="@+id/btm_confirm_it"
