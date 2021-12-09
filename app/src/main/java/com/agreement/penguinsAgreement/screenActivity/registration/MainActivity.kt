@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity(), ViewRegistration {
         super.onCreate(savedInstanceState)
         presenter = PresenterPenguins()
         presenter.initPresenter(this)
-        presenter.checkLeadingActivity(PreferenceUtil(this), resources)
+        presenter.initModelPenguins(PreferenceUtil(this), resources)
+        presenter.checkLeadingActivity()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         if (savedInstanceState == null) {
