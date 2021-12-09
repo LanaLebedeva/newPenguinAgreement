@@ -80,39 +80,39 @@ object ModelPenguins {
     }
 
     fun getTitle(): String =
-        preferences.getPrefStrTitle() ?: ""
+        preferences.title ?: ""
 
     fun getSubject(): String =
-        preferences.getPrefStrSubject() ?: ""
+        preferences.subject ?: ""
 
     fun getNumberPenguins(): String =
-        preferences.getPrefStrNumberPenguins() ?: ""
+        preferences.numberPenguins ?: ""
 
     fun getNumberPenguinsOrNull(): String? =
-        preferences.getPrefStrNumberPenguins()
+        preferences.numberPenguins
 
     fun getNumberDays(): String =
-        preferences.getPrefStrNumberDays() ?: ""
+        preferences.numberDays ?: ""
 
     fun getNumberDaysOrNull(): String? =
-        preferences.getPrefStrNumberDays()
+        preferences.numberDays
 
     fun setTitle(title: String) =
-        preferences.setPrefStrTitle(title)
+        title.also { preferences.title = it }
 
     fun setSubject(subject: String) =
-        preferences.setPrefStrSubject(subject)
+        subject.also { preferences.subject = it }
 
 
     fun setPenguinsNumber(numberPenguins: String) =
-        preferences.setPrefStrNumberPenguins(numberPenguins)
+        numberPenguins.also { preferences.numberPenguins = it }
 
     fun setDaysNumber(numberDays: String) =
-        preferences.setPrefStrNumberDays(numberDays)
+        numberDays.also { preferences.numberDays = it }
 
     fun setBoolOnAgreement(onAgreement: Boolean) =
-        getPreferences().setPrefBoolOnAgreement(onAgreement)
+        onAgreement.also { getPreferences().onAgreement = it }
 
     fun getBoolOnAgreement(): Boolean =
-        getPreferences().getPrefBoolOnAgreement()
+        getPreferences().onAgreement
 }
