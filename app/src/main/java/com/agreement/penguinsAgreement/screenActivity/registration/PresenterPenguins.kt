@@ -5,10 +5,10 @@ import com.agreement.penguinsAgreement.R
 import com.agreement.penguinsAgreement.penguinsModel.ModelPenguins
 import com.agreement.penguinsAgreement.utils.PreferenceUtil
 
-class PresenterPenguins : PresenterPenguin {
-    lateinit var viewPenguin: MainActivity
+class PresenterPenguins : ContractRegistration.Presenter {
+    private lateinit var viewPenguin: ContractRegistration.View
 
-    override fun initPresenter(_viewPenguin: MainActivity) {
+    override fun initPresenter(_viewPenguin: ContractRegistration.View) {
         viewPenguin = _viewPenguin
     }
 
@@ -38,35 +38,31 @@ class PresenterPenguins : PresenterPenguin {
         }
     }
 
-    override fun onDaysNumberTextViewChange(numberDays: String): String {
+    override fun onDaysNumberTextChange(numberDays: String) {
         ModelPenguins.setDaysNumber(numberDays)
         viewPenguin.updateDays(ModelPenguins.getPluralDays())
         viewPenguin.updateAgreement(ModelPenguins.getAgreement())
-        return ModelPenguins.getNumberDays()
     }
 
-    override fun onPenguinsNumberTextViewChange(numberPenguins: String): String {
+    override fun onPenguinsNumberTextChange(numberPenguins: String) {
         ModelPenguins.setPenguinsNumber(numberPenguins)
         viewPenguin.updatePenguins(ModelPenguins.getPluralPenguins())
         viewPenguin.updateAgreement(ModelPenguins.getAgreement())
-        return ModelPenguins.getNumberPenguins()
     }
 
-    override fun onFormAgreementChange(): String {
+    override fun onFormAgreementChange() {
         viewPenguin.updateAgreement(ModelPenguins.getAgreement())
-        return ModelPenguins.getAgreement()
     }
 
-    override fun onFormAgreementClick(): String {
+    override fun onFormAgreementClick() {
         onFormAgreementChange()
         if (!ModelPenguins.checkUpdateAgreement()) {
             viewPenguin.setSnackbarAgreement()
         }
         viewPenguin.updateAgreement(ModelPenguins.getAgreement())
-        return ModelPenguins.getAgreement()
     }
 
-    override fun onConfirmItClick(): String {
+    override fun onConfirmItClick() {
         onFormAgreementChange()
         if (ModelPenguins.getAgreement() != ModelPenguins.getResources()
                 .getString(R.string.text_there_will_be_an_agreement)
@@ -76,24 +72,20 @@ class PresenterPenguins : PresenterPenguin {
         } else {
             viewPenguin.setSnackbarAgreement()
         }
-        return ModelPenguins.getAgreement()
     }
 
-    override fun onTitleTextViewChange(title: String): String {
+    override fun onTitleTextViewChange(title: String) {
         ModelPenguins.setTitle(title)
-        return ModelPenguins.getTitle()
     }
 
-    override fun onSubjectTextViewChange(subject: String): String {
+    override fun onSubjectTextViewChange(subject: String) {
         ModelPenguins.setSubject(subject)
-        return ModelPenguins.getSubject()
     }
 
     override fun checkLeadingActivity() {
         if (ModelPenguins.getBoolOnAgreement()) {
             viewPenguin.startAgreement()
         }
-
     }
 
     override fun initModelPenguins(preferences: PreferenceUtil, resources: Resources) {

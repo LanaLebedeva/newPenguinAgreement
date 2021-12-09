@@ -7,10 +7,10 @@ import androidx.core.widget.doAfterTextChanged
 import com.agreement.penguinsAgreement.R
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
 import com.agreement.penguinsAgreement.screenActivity.agreement.AgreementActivity
-import com.agreement.penguinsAgreement.utils.PreferenceUtil
 import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity(), ViewRegistration {
+class MainActivity : AppCompatActivity(),
+    ContractRegistration.View {
 
     private lateinit var presenter: PresenterPenguins
     private lateinit var binding: ActivityMainBinding
@@ -18,7 +18,10 @@ class MainActivity : AppCompatActivity(), ViewRegistration {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter = PresenterPenguins()
+
+        //TODO как правильно передать ContractRegistration.View -> в коде ниже приведение по умолчанию?
         presenter.initPresenter(this)
+
         presenter.checkLeadingActivity()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -44,12 +47,12 @@ class MainActivity : AppCompatActivity(), ViewRegistration {
 
     }
 
-    override fun initListeners() {
+    private fun initListeners() {
         binding.tvDaysNumber.doAfterTextChanged {
-            presenter.onDaysNumberTextViewChange(binding.tvDaysNumber.text.toString())
+            presenter.onDaysNumberTextChange(binding.tvDaysNumber.text.toString())
         }
         binding.tvPenguinsNumber.doAfterTextChanged {
-            presenter.onPenguinsNumberTextViewChange(binding.tvPenguinsNumber.text.toString())
+            presenter.onPenguinsNumberTextChange(binding.tvPenguinsNumber.text.toString())
         }
         binding.btnFormAgreement.setOnClickListener {
             presenter.onFormAgreementClick()
