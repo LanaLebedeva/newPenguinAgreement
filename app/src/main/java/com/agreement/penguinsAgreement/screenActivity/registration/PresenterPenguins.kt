@@ -14,10 +14,10 @@ class PresenterPenguins : PresenterPenguin {
 
     override fun initView() {
         with(viewPenguin) {
-            updateTitle(ModelPenguins.getPreferences().getPrefStrTitle() ?: "")
-            updateSubject(ModelPenguins.getPreferences().getPrefStrSubject() ?: "")
-            updateNumberPenguins(ModelPenguins.getPreferences().getPrefStrNumberPenguins() ?: "")
-            updateNumberDays(ModelPenguins.getPreferences().getPrefStrNumberDays() ?: "")
+            updateTitle(ModelPenguins.getTitle())
+            updateSubject(ModelPenguins.getSubject())
+            updateNumberPenguins(ModelPenguins.getNumberPenguins())
+            updateNumberDays(ModelPenguins.getNumberDays())
             updatePenguins(ModelPenguins.getPluralPenguins())
             updateDays(ModelPenguins.getPluralDays())
             updateAgreement(ModelPenguins.getAgreement())
@@ -30,61 +30,61 @@ class PresenterPenguins : PresenterPenguin {
         penguinsNumber: String,
         daysNumber: String
     ) {
-        with(ModelPenguins.getPreferences()) {
-            setPrefStrTitle(title)
-            setPrefStrSubject(subject)
-            setPrefStrNumberPenguins(penguinsNumber)
-            setPrefStrNumberDays(daysNumber)
+        with(ModelPenguins) {
+            setTitle(title)
+            setSubject(subject)
+            setPenguinsNumber(penguinsNumber)
+            setDaysNumber(daysNumber)
         }
     }
 
     override fun onDaysNumberTextViewChange(numberDays: String) {
-        ModelPenguins.updateDaysNumber(numberDays)
+        ModelPenguins.setDaysNumber(numberDays)
         viewPenguin.updateDays(ModelPenguins.getPluralDays())
         viewPenguin.updateAgreement(ModelPenguins.getAgreement())
     }
 
-    fun onPenguinsNumberTextViewChange(numberPenguins: String) {
-        ModelPenguins.updatePenguinsNumber(numberPenguins)
+    override fun onPenguinsNumberTextViewChange(numberPenguins: String) {
+        ModelPenguins.setPenguinsNumber(numberPenguins)
         viewPenguin.updatePenguins(ModelPenguins.getPluralPenguins())
         viewPenguin.updateAgreement(ModelPenguins.getAgreement())
     }
 
-    private fun onFormAgreementChange() {
+    override fun onFormAgreementChange() {
         viewPenguin.updateAgreement(ModelPenguins.getAgreement())
     }
 
-    fun onFormAgreementClick() {
+    override fun onFormAgreementClick() {
         onFormAgreementChange()
-        if (!ModelPenguins.updateAgreement()) {
+        if (!ModelPenguins.checkUpdateAgreement()) {
             viewPenguin.setSnackbarAgreement()
         }
         viewPenguin.updateAgreement(ModelPenguins.getAgreement())
     }
 
-    fun onConfirmItClick() {
+    override fun onConfirmItClick() {
         onFormAgreementChange()
         if (ModelPenguins.getAgreement() != ModelPenguins.getResources()
                 .getString(R.string.text_there_will_be_an_agreement)
         ) {
-            ModelPenguins.getPreferences().setPrefBoolOnAgreement(true)
+            ModelPenguins.setBoolOnAgreement(true)
             viewPenguin.startAgreement()
         } else {
             viewPenguin.setSnackbarAgreement()
         }
     }
 
-    fun onTitleTextViewChange(title: String) {
-        ModelPenguins.getPreferences().setPrefStrTitle(title)
+    override fun onTitleTextViewChange(title: String) {
+        ModelPenguins.setTitle(title)
     }
 
-    fun onSubjectTextViewChange(subject: String) {
-        ModelPenguins.getPreferences().setPrefStrSubject(subject)
+    override fun onSubjectTextViewChange(subject: String) {
+        ModelPenguins.setSubject(subject)
     }
 
-    fun checkLeadingActivity(preferences: PreferenceUtil, resources: Resources) {
+    override fun checkLeadingActivity(preferences: PreferenceUtil, resources: Resources) {
         ModelPenguins.initPreferenceResources(preferences, resources)
-        if (ModelPenguins.getPreferences().getPrefBoolOnAgreement()) {
+        if (ModelPenguins.getBoolOnAgreement()) {
             viewPenguin.startAgreement()
         }
     }

@@ -14,14 +14,14 @@ object ModelPenguins {
         resources = _resources
     }
 
-    fun getPreferences() = preferences
+    private fun getPreferences() = preferences
 
     fun getResources() = resources
 
     fun getPluralPenguins(): String {
         val parsInt: Int = try {
             Integer.parseInt(
-                getPreferences().getPrefStrNumberPenguins()
+                getNumberPenguinsOrNull()
                     ?: resources.getString(R.string.text_penguins)
             )
         } catch (e: NumberFormatException) {
@@ -37,7 +37,7 @@ object ModelPenguins {
     fun getPluralDays(): String {
         val parsInt: Int = try {
             Integer.parseInt(
-                getPreferences().getPrefStrNumberDays()
+                getNumberDaysOrNull()
                     ?: resources.getString(R.string.text_days)
             )
         } catch (e: NumberFormatException) {
@@ -51,10 +51,10 @@ object ModelPenguins {
     }
 
     fun getAgreement(): String {
-        val title: String? = preferences.getPrefStrTitle()
-        val subject: String? = preferences.getPrefStrSubject()
-        val numberPenguins: String? = preferences.getPrefStrNumberPenguins()
-        val numberDays: String? = preferences.getPrefStrNumberDays()
+        val title: String = getTitle()
+        val subject: String = getSubject()
+        val numberPenguins: String = getNumberPenguins()
+        val numberDays: String = getNumberDays()
 
         val fieldsNotEmpty =
             title != "" && subject != "" && numberPenguins != "" && numberDays != ""
@@ -72,18 +72,47 @@ object ModelPenguins {
         return agreementStr
     }
 
-    fun updateAgreement(): Boolean {
+    fun checkUpdateAgreement(): Boolean {
         if (getAgreement() == resources.getString(R.string.text_there_will_be_an_agreement)) {
             return false
         }
         return true
     }
 
-    fun updatePenguinsNumber(numberPenguins: String) {
-        preferences.setPrefStrNumberPenguins(numberPenguins)
-    }
+    fun getTitle(): String =
+        preferences.getPrefStrTitle() ?: ""
 
-    fun updateDaysNumber(numberDays: String) {
+    fun getSubject(): String =
+        preferences.getPrefStrSubject() ?: ""
+
+    fun getNumberPenguins(): String =
+        preferences.getPrefStrNumberPenguins() ?: ""
+
+    fun getNumberPenguinsOrNull(): String? =
+        preferences.getPrefStrNumberPenguins()
+
+    fun getNumberDays(): String =
+        preferences.getPrefStrNumberDays() ?: ""
+
+    fun getNumberDaysOrNull(): String? =
+        preferences.getPrefStrNumberDays()
+
+    fun setTitle(title: String) =
+        preferences.setPrefStrTitle(title)
+
+    fun setSubject(subject: String) =
+        preferences.setPrefStrSubject(subject)
+
+
+    fun setPenguinsNumber(numberPenguins: String) =
+        preferences.setPrefStrNumberPenguins(numberPenguins)
+
+    fun setDaysNumber(numberDays: String) =
         preferences.setPrefStrNumberDays(numberDays)
-    }
+
+    fun setBoolOnAgreement(onAgreement: Boolean) =
+        getPreferences().setPrefBoolOnAgreement(onAgreement)
+
+    fun getBoolOnAgreement(): Boolean =
+        getPreferences().getPrefBoolOnAgreement()
 }

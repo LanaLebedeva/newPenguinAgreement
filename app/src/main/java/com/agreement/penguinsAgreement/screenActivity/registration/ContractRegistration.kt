@@ -1,5 +1,8 @@
 package com.agreement.penguinsAgreement.screenActivity.registration
 
+import android.content.res.Resources
+import com.agreement.penguinsAgreement.utils.PreferenceUtil
+
 interface ViewRegistration {
     fun initListeners()
     fun updateAgreement(agreement: String)
@@ -17,7 +20,12 @@ interface PresenterPenguin {
     fun initPresenter(_viewPenguin: MainActivity)
     fun initView()
     fun saveViewPenguins(title: String, subject: String, penguinsNumber: String, daysNumber: String)
-    fun onDaysNumberTextViewChange(numberDays: String) {
-
-    }
+    fun onDaysNumberTextViewChange(numberDays: String)
+    fun onPenguinsNumberTextViewChange(numberPenguins: String)
+    fun onFormAgreementChange()
+    fun onFormAgreementClick()
+    fun onConfirmItClick()
+    fun onTitleTextViewChange(title: String)
+    fun onSubjectTextViewChange(subject: String)
+    fun checkLeadingActivity(preferences: PreferenceUtil, resources: Resources)
 }
