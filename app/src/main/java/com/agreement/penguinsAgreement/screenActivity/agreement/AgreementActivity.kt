@@ -7,7 +7,7 @@ import com.agreement.penguinsAgreement.databinding.ActivityAgreementBinding
 import com.agreement.penguinsAgreement.screenActivity.registration.MainActivity
 
 
-class AgreementActivity : AppCompatActivity(), AgreementActivityI {
+class AgreementActivity : AppCompatActivity(), ContractAgreement.View {
     private lateinit var bindingAgreement: ActivityAgreementBinding
     private lateinit var presenter: PresenterAgreement
 
@@ -19,14 +19,6 @@ class AgreementActivity : AppCompatActivity(), AgreementActivityI {
         presenter = PresenterAgreement(this)
         presenter.initAgreement()
         initListeners()
-    }
-
-
-    private fun initListeners() {
-        bindingAgreement.btnAgree.setOnClickListener {}
-        bindingAgreement.btnDisagree.setOnClickListener {
-            presenter.onBtnDisagreeClick()
-        }
     }
 
     override fun onBackPressed() {
@@ -42,5 +34,12 @@ class AgreementActivity : AppCompatActivity(), AgreementActivityI {
         val intent = Intent(this, MainActivity::class.java)
         finish()
         startActivity(intent)
+    }
+
+    private fun initListeners() {
+        with(bindingAgreement) {
+            btnAgree.setOnClickListener { presenter.onButtonAgreeClick() }
+            btnDisagree.setOnClickListener { presenter.onButtonDisagreeClick() }
+        }
     }
 }

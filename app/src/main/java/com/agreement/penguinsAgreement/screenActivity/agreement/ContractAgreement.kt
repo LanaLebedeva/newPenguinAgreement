@@ -1,12 +1,16 @@
 package com.agreement.penguinsAgreement.screenActivity.agreement
 
-interface PresenterAgreementI {
-    fun initAgreement()
-    fun onBtnDisagreeClick()
-    fun onBackPressedClick()
-}
+interface ContractAgreement {
 
-interface AgreementActivityI {
-    fun updateAgreement(agreement: String)
-    fun navigateToRegistration()
+    interface Presenter {
+        fun initAgreement()
+        fun onButtonDisagreeClick()
+        fun onButtonAgreeClick()
+        fun onBackPressedClick()
+    }
+
+    interface View {
+        fun updateAgreement(agreement: String)
+        fun navigateToRegistration()
+    }
 }

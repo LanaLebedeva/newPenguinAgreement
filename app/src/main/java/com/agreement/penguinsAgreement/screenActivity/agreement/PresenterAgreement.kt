@@ -2,18 +2,24 @@ package com.agreement.penguinsAgreement.screenActivity.agreement
 
 import com.agreement.penguinsAgreement.penguinsModel.ModelPenguins
 
-class PresenterAgreement(val viewAgreement: AgreementActivity) : PresenterAgreementI {
+class PresenterAgreement(private val view: ContractAgreement.View) : ContractAgreement.Presenter {
+    private val model = ModelPenguins
+
     override fun initAgreement() {
-        viewAgreement.updateAgreement(ModelPenguins.getAgreement())
+        view.updateAgreement(model.getAgreement())
     }
 
-    override fun onBtnDisagreeClick() {
-        ModelPenguins.setBoolOnAgreement(false)
-        viewAgreement.navigateToRegistration()
+    override fun onButtonDisagreeClick() {
+        model.setBoolOnAgreement(false)
+        view.navigateToRegistration()
     }
 
     override fun onBackPressedClick() {
-        ModelPenguins.setBoolOnAgreement(false)
+        model.setBoolOnAgreement(false)
+    }
+
+    override fun onButtonAgreeClick() {
+        TODO("Not yet implemented")
     }
 
 }
