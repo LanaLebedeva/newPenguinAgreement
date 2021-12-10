@@ -32,20 +32,20 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun initListeners() {
-        binding.tvDaysNumber.doAfterTextChanged {
-            presenter.onDaysNumberTextChange(binding.tvDaysNumber.text.toString())
+        binding.tvDaysNumber.doAfterTextChanged { text ->
+            presenter.onDaysNumberTextChange(text.toString())
         }
-        binding.tvPenguinsNumber.doAfterTextChanged {
-            presenter.onPenguinsNumberTextChange(binding.tvPenguinsNumber.text.toString())
+        binding.tvPenguinsNumber.doAfterTextChanged { text ->
+            presenter.onPenguinsNumberTextChange(text.toString())
         }
         binding.btnFormAgreement.setOnClickListener {
             presenter.onFormAgreementClick()
         }
-        binding.tvTitle.doAfterTextChanged {
-            presenter.onTitleTextViewChange(binding.tvTitle.text.toString())
+        binding.tvTitle.doAfterTextChanged { text ->
+            presenter.onTitleTextViewChange(text.toString())
         }
-        binding.tvSubject.doAfterTextChanged {
-            presenter.onSubjectTextViewChange(binding.tvSubject.text.toString())
+        binding.tvSubject.doAfterTextChanged { text ->
+            presenter.onSubjectTextViewChange(text.toString())
         }
         binding.tvDaysNumber.setOnKeyListener { _, keyCode, _ ->
             if (keyCode == android.view.KeyEvent.KEYCODE_ENTER) {
