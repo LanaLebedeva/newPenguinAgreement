@@ -68,7 +68,7 @@ class PresenterPenguins : ContractRegistration.Presenter {
                 .getString(R.string.text_there_will_be_an_agreement)
         ) {
             ModelPenguins.setBoolOnAgreement(true)
-            viewPenguin.startAgreement()
+            viewPenguin.navigateToAgreement()
         } else {
             viewPenguin.setSnackbarAgreement()
         }
@@ -84,11 +84,7 @@ class PresenterPenguins : ContractRegistration.Presenter {
 
     override fun checkLeadingActivity() {
         if (ModelPenguins.getBoolOnAgreement()) {
-            viewPenguin.startAgreement()
+            viewPenguin.navigateToAgreement()
         }
-    }
-
-    override fun initModelPenguins(preferences: PreferenceUtil, resources: Resources) {
-        ModelPenguins.initPreferenceResources(preferences, resources)
     }
 }

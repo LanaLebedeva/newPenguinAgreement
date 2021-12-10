@@ -8,5 +8,5 @@ interface PresenterAgreementI {
 
 interface AgreementActivityI {
     fun updateAgreement(agreement: String)
-    fun startRegistration()
+    fun navigateToRegistration()
 }

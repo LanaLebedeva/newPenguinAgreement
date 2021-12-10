@@ -38,7 +38,7 @@ class AgreementActivity : AppCompatActivity(), AgreementActivityI {
         bindingAgreement.tvAgreementText.text = agreement
     }
 
-    override fun startRegistration() {
+    override fun navigateToRegistration() {
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)

@@ -31,22 +31,6 @@ class MainActivity : AppCompatActivity(),
         initListeners()
     }
 
-    override fun onStart() {
-        super.onStart()
-        presenter.initView()
-    }
-
-    override fun onStop() {
-        presenter.saveViewPenguins(
-            binding.tvTitle.text.toString(),
-            binding.tvSubject.text.toString(),
-            binding.tvPenguinsNumber.text.toString(),
-            binding.tvDaysNumber.text.toString()
-        )
-        super.onStop()
-
-    }
-
     private fun initListeners() {
         binding.tvDaysNumber.doAfterTextChanged {
             presenter.onDaysNumberTextChange(binding.tvDaysNumber.text.toString())
@@ -113,8 +97,9 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    override fun startAgreement() {
+    override fun navigateToAgreement() {
         val intent = Intent(this, AgreementActivity::class.java)
+        //TODO удалиь текущую активити
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }

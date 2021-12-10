@@ -9,7 +9,7 @@ class PresenterAgreement(val viewAgreement: AgreementActivity) : PresenterAgreem
 
     override fun onBtnDisagreeClick() {
         ModelPenguins.setBoolOnAgreement(false)
-        viewAgreement.startRegistration()
+        viewAgreement.navigateToRegistration()
     }
 
     override fun onBackPressedClick() {

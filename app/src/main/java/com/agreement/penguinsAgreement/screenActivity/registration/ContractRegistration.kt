@@ -13,7 +13,7 @@ interface ContractRegistration {
         fun updateNumberDays(numberDays: String)
         fun updateDays(pluralsNumber: String)
         fun setSnackbarAgreement()
-        fun startAgreement()
+        fun navigateToAgreement()
     }
 
     interface Presenter {
@@ -34,6 +34,5 @@ interface ContractRegistration {
         fun onTitleTextViewChange(title: String)
         fun onSubjectTextViewChange(subject: String)
         fun checkLeadingActivity()
-        fun initModelPenguins(preferences: PreferenceUtil, resources: Resources)
     }
 }
