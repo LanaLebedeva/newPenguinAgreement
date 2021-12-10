@@ -7,20 +7,22 @@ import com.agreement.penguinsAgreement.utils.PreferenceUtil
 
 class PresenterPenguins : ContractRegistration.Presenter {
     private lateinit var viewPenguin: ContractRegistration.View
+    private val model: ModelPenguins = ModelPenguins
 
     override fun initPresenter(_viewPenguin: ContractRegistration.View) {
         viewPenguin = _viewPenguin
     }
 
     override fun initView() {
+        checkLeadingActivity()
         with(viewPenguin) {
-            updateTitle(ModelPenguins.getTitle())
-            updateSubject(ModelPenguins.getSubject())
-            updateNumberPenguins(ModelPenguins.getNumberPenguins())
-            updateNumberDays(ModelPenguins.getNumberDays())
-            updatePenguins(ModelPenguins.getPluralPenguins())
-            updateDays(ModelPenguins.getPluralDays())
-            updateAgreement(ModelPenguins.getAgreement())
+            updateTitle(model.getTitle())
+            updateSubject(model.getSubject())
+            updateNumberPenguins(model.getNumberPenguins())
+            updateNumberDays(model.getNumberDays())
+            updatePenguins(model.getPluralPenguins())
+            updateDays(model.getPluralDays())
+            updateAgreement(model.getAgreement())
         }
     }
 
@@ -30,7 +32,7 @@ class PresenterPenguins : ContractRegistration.Presenter {
         penguinsNumber: String,
         daysNumber: String
     ) {
-        with(ModelPenguins) {
+        with(model) {
             setTitle(title)
             setSubject(subject)
             setPenguinsNumber(penguinsNumber)
@@ -39,51 +41,51 @@ class PresenterPenguins : ContractRegistration.Presenter {
     }
 
     override fun onDaysNumberTextChange(numberDays: String) {
-        ModelPenguins.setDaysNumber(numberDays)
-        viewPenguin.updateDays(ModelPenguins.getPluralDays())
-        viewPenguin.updateAgreement(ModelPenguins.getAgreement())
+        model.setDaysNumber(numberDays)
+        viewPenguin.updateDays(model.getPluralDays())
+        viewPenguin.updateAgreement(model.getAgreement())
     }
 
     override fun onPenguinsNumberTextChange(numberPenguins: String) {
-        ModelPenguins.setPenguinsNumber(numberPenguins)
-        viewPenguin.updatePenguins(ModelPenguins.getPluralPenguins())
-        viewPenguin.updateAgreement(ModelPenguins.getAgreement())
+        model.setPenguinsNumber(numberPenguins)
+        viewPenguin.updatePenguins(model.getPluralPenguins())
+        viewPenguin.updateAgreement(model.getAgreement())
     }
 
     override fun onFormAgreementChange() {
-        viewPenguin.updateAgreement(ModelPenguins.getAgreement())
+        viewPenguin.updateAgreement(model.getAgreement())
     }
 
-    override fun onFormAgreementClick() {
+    override fun onFormAgreementButtonClick() {
         onFormAgreementChange()
-        if (!ModelPenguins.checkUpdateAgreement()) {
+        if (!model.checkUpdateAgreement()) {
             viewPenguin.setSnackbarAgreement()
         }
-        viewPenguin.updateAgreement(ModelPenguins.getAgreement())
+        viewPenguin.updateAgreement(model.getAgreement())
     }
 
-    override fun onConfirmItClick() {
+    override fun onConfirmItButtonClick() {
         onFormAgreementChange()
-        if (ModelPenguins.getAgreement() != ModelPenguins.getResources()
+        if (model.getAgreement() != ModelPenguins.getResources()
                 .getString(R.string.text_there_will_be_an_agreement)
         ) {
-            ModelPenguins.setBoolOnAgreement(true)
+            model.setBoolOnAgreement(true)
             viewPenguin.navigateToAgreement()
         } else {
             viewPenguin.setSnackbarAgreement()
         }
     }
 
-    override fun onTitleTextViewChange(title: String) {
-        ModelPenguins.setTitle(title)
+    override fun onTitleTextChange(title: String) {
+        model.setTitle(title)
     }
 
-    override fun onSubjectTextViewChange(subject: String) {
-        ModelPenguins.setSubject(subject)
+    override fun onSubjectTextChange(subject: String) {
+        model.setSubject(subject)
     }
 
-    override fun checkLeadingActivity() {
-        if (ModelPenguins.getBoolOnAgreement()) {
+    private fun checkLeadingActivity() {
+        if (model.getBoolOnAgreement()) {
             viewPenguin.navigateToAgreement()
         }
     }

@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity(),
         //TODO как правильно передать ContractRegistration.View -> в коде ниже приведение по умолчанию?
         presenter.initPresenter(this)
 
-        presenter.checkLeadingActivity()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         if (savedInstanceState == null) {
@@ -32,29 +31,31 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun initListeners() {
-        binding.tvDaysNumber.doAfterTextChanged { text ->
-            presenter.onDaysNumberTextChange(text.toString())
-        }
-        binding.tvPenguinsNumber.doAfterTextChanged { text ->
-            presenter.onPenguinsNumberTextChange(text.toString())
-        }
-        binding.btnFormAgreement.setOnClickListener {
-            presenter.onFormAgreementClick()
-        }
-        binding.tvTitle.doAfterTextChanged { text ->
-            presenter.onTitleTextViewChange(text.toString())
-        }
-        binding.tvSubject.doAfterTextChanged { text ->
-            presenter.onSubjectTextViewChange(text.toString())
-        }
-        binding.tvDaysNumber.setOnKeyListener { _, keyCode, _ ->
-            if (keyCode == android.view.KeyEvent.KEYCODE_ENTER) {
-                presenter.onFormAgreementClick()
+        with(binding) {
+            tvDaysNumber.doAfterTextChanged { text ->
+                presenter.onDaysNumberTextChange(text.toString())
             }
-            false
-        }
-        binding.btmConfirmIt.setOnClickListener {
-            presenter.onConfirmItClick()
+            tvPenguinsNumber.doAfterTextChanged { text ->
+                presenter.onPenguinsNumberTextChange(text.toString())
+            }
+            btnFormAgreement.setOnClickListener {
+                presenter.onFormAgreementButtonClick()
+            }
+            tvTitle.doAfterTextChanged { text ->
+                presenter.onTitleTextChange(text.toString())
+            }
+            tvSubject.doAfterTextChanged { text ->
+                presenter.onSubjectTextChange(text.toString())
+            }
+            tvDaysNumber.setOnKeyListener { _, keyCode, _ ->
+                if (keyCode == android.view.KeyEvent.KEYCODE_ENTER) {
+                    presenter.onFormAgreementButtonClick()
+                }
+                false
+            }
+            btmConfirmIt.setOnClickListener {
+                presenter.onConfirmItButtonClick()
+            }
         }
     }
 
@@ -99,8 +100,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun navigateToAgreement() {
         val intent = Intent(this, AgreementActivity::class.java)
-        //TODO удалиь текущую активити
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        finish()
         startActivity(intent)
     }
 }

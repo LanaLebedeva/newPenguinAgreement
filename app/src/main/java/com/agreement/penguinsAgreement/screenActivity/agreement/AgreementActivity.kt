@@ -40,7 +40,7 @@ class AgreementActivity : AppCompatActivity(), AgreementActivityI {
 
     override fun navigateToRegistration() {
         val intent = Intent(this, MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        finish()
         startActivity(intent)
     }
 }

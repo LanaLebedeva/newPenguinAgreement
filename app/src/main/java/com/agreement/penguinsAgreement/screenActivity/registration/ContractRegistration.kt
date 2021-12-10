@@ -29,10 +29,9 @@ interface ContractRegistration {
         fun onDaysNumberTextChange(numberDays: String)
         fun onPenguinsNumberTextChange(numberPenguins: String)
         fun onFormAgreementChange()
-        fun onFormAgreementClick()
-        fun onConfirmItClick()
-        fun onTitleTextViewChange(title: String)
-        fun onSubjectTextViewChange(subject: String)
-        fun checkLeadingActivity()
+        fun onFormAgreementButtonClick()
+        fun onConfirmItButtonClick()
+        fun onTitleTextChange(title: String)
+        fun onSubjectTextChange(subject: String)
     }
 }
