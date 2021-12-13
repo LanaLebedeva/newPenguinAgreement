@@ -1,9 +1,7 @@
 package com.agreement.penguinsAgreement.screenActivity.registration
 
-import android.content.res.Resources
 import com.agreement.penguinsAgreement.R
 import com.agreement.penguinsAgreement.penguinsModel.ModelPenguins
-import com.agreement.penguinsAgreement.utils.PreferenceUtil
 
 class PresenterPenguins : ContractRegistration.Presenter {
     private lateinit var viewPenguin: ContractRegistration.View
@@ -66,7 +64,7 @@ class PresenterPenguins : ContractRegistration.Presenter {
 
     override fun onConfirmItButtonClick() {
         onFormAgreementChange()
-        if (model.getAgreement() != ModelPenguins.getResources()
+        if (model.getAgreement() != model.getResources()
                 .getString(R.string.text_there_will_be_an_agreement)
         ) {
             model.setBoolOnAgreement(true)

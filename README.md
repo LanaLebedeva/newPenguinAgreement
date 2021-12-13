@@ -37,4 +37,4 @@ Create one screen
 7. https://developer.android.com/topic/libraries/architecture/saving-states                                  - Saving UI States
 8. http://www.fandroid.info/lecture-5-on-the-architecture-of-the-android-application-mvp-pattern/            - MVP with code
 9. https://medium.com/nuances-of-programming/делегаты-в-kotlin-дляandroid-используйте-силу-делегированных-свойств-в-разработке-под-android-ca4d88d42800
-                                                                                                             - delegate
+10. https://javadoc.io/doc/org.mockito/mockito-core/1.9.0/org/mockito/Mockito.html                           - Mockito

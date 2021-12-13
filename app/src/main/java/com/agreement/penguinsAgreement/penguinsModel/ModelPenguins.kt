@@ -6,7 +6,8 @@ import com.agreement.penguinsAgreement.R
 import com.agreement.penguinsAgreement.utils.PreferenceUtil
 
 object ModelPenguins {
-    private lateinit var preferences: PreferenceUtil
+//class ModelPenguins {
+private lateinit var preferences: PreferenceUtil
     private lateinit var resources: Resources
 
     fun initPreferenceResources(_preferences: PreferenceUtil, _resources: Resources) {
