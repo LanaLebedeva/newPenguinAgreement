@@ -1,11 +1,11 @@
 package com.agreement.penguinsAgreement.screenActivity.registration
 
 import com.agreement.penguinsAgreement.penguinsModel.ModelPenguins
+import com.nhaarman.mockitokotlin2.mock
 import junit.framework.TestCase
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
@@ -16,14 +16,10 @@ private const val FAKE_STRING_NUMBER_DAYS = "21"
 
 @RunWith(MockitoJUnitRunner::class)
 class PresenterPenguinsTest : TestCase() {
-    @Mock
-    private lateinit var viewPenguin: ContractRegistration.View
+    private val viewPenguin: ContractRegistration.View = mock()
+    private val model: ModelPenguins = mock()
+    private var presenter: PresenterPenguins = PresenterPenguins(viewPenguin, model)
 
-    //    @Mock
-    private lateinit var presenter: PresenterPenguins
-
-    //    @Mock
-    private lateinit var model: ModelPenguins
 
     //    @Mock
 //    private val viewPenguin = mock(ContractRegistration.View.javaClass)
@@ -44,12 +40,12 @@ class PresenterPenguinsTest : TestCase() {
         // Чтобы внедрить макеты в тест необходимо вызвать метод initMocks.
         MockitoAnnotations.openMocks(this)
         // Получение ссылки на тестируемый класс
-        presenter = PresenterPenguins()
+//        presenter = PresenterPenguins(viewPenguin, model)
         // инициализация тестируемого класса
         presenter.initPresenter(viewPenguin)
         // Ведущий не будет обновлять представление, пока оно не станет активным.
 //        `when`(viewPenguin.isActive).thenReturn(true)
-        model = ModelPenguins
+//        model = ModelPenguins
 //        val sharedPreference: SharedPreferences = mock(SharedPreferences.class)
 //        val contex: Contex = mock(Contex.class)
 //        ModelPenguins.initPreferenceResources(PreferenceUtil(Penguins), resources)
@@ -107,7 +103,7 @@ class PresenterPenguinsTest : TestCase() {
     @Test
     fun testOnTitleTextChange() {
         presenter.onTitleTextChange(FAKE_STRING_AGREEMENTS)
-        verify(viewPenguin).updateTitle(FAKE_STRING_AGREEMENTS)
+        verify(model).setTitle(FAKE_STRING_AGREEMENTS)
     }
 
     fun testOnSubjectTextChange() {}

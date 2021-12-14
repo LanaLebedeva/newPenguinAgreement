@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.agreement.penguinsAgreement.R
 import com.agreement.penguinsAgreement.databinding.ActivityMainBinding
+import com.agreement.penguinsAgreement.penguinsModel.ModelPenguins
 import com.agreement.penguinsAgreement.screenActivity.agreement.AgreementActivity
 import com.google.android.material.snackbar.Snackbar
 
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = PresenterPenguins()
+        presenter = PresenterPenguins(this, ModelPenguins)
 
         //TODO как правильно передать ContractRegistration.View -> в коде ниже приведение по умолчанию?
         presenter.initPresenter(this)

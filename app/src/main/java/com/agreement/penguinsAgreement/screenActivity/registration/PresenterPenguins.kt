@@ -3,12 +3,13 @@ package com.agreement.penguinsAgreement.screenActivity.registration
 import com.agreement.penguinsAgreement.R
 import com.agreement.penguinsAgreement.penguinsModel.ModelPenguins
 
-class PresenterPenguins : ContractRegistration.Presenter {
-    private lateinit var viewPenguin: ContractRegistration.View
-    private val model: ModelPenguins = ModelPenguins
+class PresenterPenguins(
+    private var viewPenguin: ContractRegistration.View,
+    private val model: ModelPenguins
+) : ContractRegistration.Presenter {
 
     override fun initPresenter(_viewPenguin: ContractRegistration.View) {
-        viewPenguin = _viewPenguin
+//        viewPenguin = _viewPenguin
     }
 
     override fun initView() {
